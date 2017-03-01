@@ -16,6 +16,10 @@ CMakeFiles/sunday.dir/ft_printf.c.o: ../ft_printf.h
 CMakeFiles/sunday.dir/ft_putnbr.c.o: ../ft_putnbr.c
 CMakeFiles/sunday.dir/ft_putnbr.c.o: ../libft/libft.h
 
+CMakeFiles/sunday.dir/ft_strchr.c.o: ../ft_strchr.c
+
+CMakeFiles/sunday.dir/ft_strlen.c.o: ../ft_strlen.c
+
 CMakeFiles/sunday.dir/ft_struct.c.o: ../ft_printf.h
 CMakeFiles/sunday.dir/ft_struct.c.o: ../ft_struct.c
 

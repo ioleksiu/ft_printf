@@ -64,9 +64,9 @@ int main(int ac, char **av) {
 */
 
         printf("\n------------------\n");
-        printf("%%");
+        printf("%5%");
         printf("\n------------------\n");
-        ft_printf("%%");
+        ft_printf("%5%");
         }
     return (0);
 }

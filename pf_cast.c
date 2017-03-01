@@ -135,20 +135,20 @@ void f_s(t_pf *a, va_list ap)
     s = va_arg(ap, char *);
     if (a->width == 0 && a->dot == 0)
     {
-        a->width = strlen(s);
+        a->width = ft_strlen(s);
         a->dot_val = a->width;
         a->dot = 1;
     }
-    if (a->dot_val >= strlen(s))
-        a->dot_val = strlen(s);
+    if (a->dot_val >= ft_strlen(s))
+        a->dot_val = ft_strlen(s);
     if (a->width <= a->dot_val)
-        a->width = strlen(s);
+        a->width = ft_strlen(s);
     i = a->width - a->dot_val;
-    if (a->width != 0 && a->width > strlen(s)
+    if (a->width != 0 && a->width > ft_strlen(s)
         && !(a->dot == 1 && a->dot_val == 0))
     {
-        a->dot_val = strlen(s);
-        i = a->width - strlen(s);
+        a->dot_val = ft_strlen(s);
+        i = a->width - ft_strlen(s);
     }
     sp = ' ';
     if (a->zero == 1 && a->minus != 1)

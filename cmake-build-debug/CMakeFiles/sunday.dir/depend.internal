@@ -16,6 +16,10 @@ CMakeFiles/sunday.dir/ft_printf.c.o
 CMakeFiles/sunday.dir/ft_putnbr.c.o
  /nfs/2016/i/ioleksiu/ClionProjects/sunday/ft_putnbr.c
  /nfs/2016/i/ioleksiu/ClionProjects/sunday/libft/libft.h
+CMakeFiles/sunday.dir/ft_strchr.c.o
+ /nfs/2016/i/ioleksiu/ClionProjects/sunday/ft_strchr.c
+CMakeFiles/sunday.dir/ft_strlen.c.o
+ /nfs/2016/i/ioleksiu/ClionProjects/sunday/ft_strlen.c
 CMakeFiles/sunday.dir/ft_struct.c.o
  /nfs/2016/i/ioleksiu/ClionProjects/sunday/ft_printf.h
  /nfs/2016/i/ioleksiu/ClionProjects/sunday/ft_struct.c

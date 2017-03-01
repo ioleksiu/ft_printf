@@ -8,6 +8,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/sunday.dir/ft_putnbr.c.o"
   "CMakeFiles/sunday.dir/ft_printf.c.o"
   "CMakeFiles/sunday.dir/pf_cast.c.o"
+  "CMakeFiles/sunday.dir/ft_strchr.c.o"
+  "CMakeFiles/sunday.dir/ft_strlen.c.o"
   "sunday.pdb"
   "sunday"
 )

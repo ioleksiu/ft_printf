@@ -13,6 +13,8 @@ set(SOURCE_FILES
         main.c
         ft_putnbr.c
         ft_printf.c
-        pf_cast.c)
+        pf_cast.c
+        ft_strchr.c
+        ft_strlen.c)
 
 add_executable(sunday ${SOURCE_FILES})

@@ -100,6 +100,12 @@
 		<Unit filename="/nfs/2016/i/ioleksiu/ClionProjects/sunday/ft_putnbr.c">
 			<Option target="sunday"/>
 		</Unit>
+		<Unit filename="/nfs/2016/i/ioleksiu/ClionProjects/sunday/ft_strchr.c">
+			<Option target="sunday"/>
+		</Unit>
+		<Unit filename="/nfs/2016/i/ioleksiu/ClionProjects/sunday/ft_strlen.c">
+			<Option target="sunday"/>
+		</Unit>
 		<Unit filename="/nfs/2016/i/ioleksiu/ClionProjects/sunday/ft_struct.c">
 			<Option target="sunday"/>
 		</Unit>

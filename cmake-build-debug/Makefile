@@ -258,6 +258,60 @@ ft_putnbr.c.s:
 	$(MAKE) -f CMakeFiles/sunday.dir/build.make CMakeFiles/sunday.dir/ft_putnbr.c.s
 .PHONY : ft_putnbr.c.s
 
+ft_strchr.o: ft_strchr.c.o
+
+.PHONY : ft_strchr.o
+
+# target to build an object file
+ft_strchr.c.o:
+	$(MAKE) -f CMakeFiles/sunday.dir/build.make CMakeFiles/sunday.dir/ft_strchr.c.o
+.PHONY : ft_strchr.c.o
+
+ft_strchr.i: ft_strchr.c.i
+
+.PHONY : ft_strchr.i
+
+# target to preprocess a source file
+ft_strchr.c.i:
+	$(MAKE) -f CMakeFiles/sunday.dir/build.make CMakeFiles/sunday.dir/ft_strchr.c.i
+.PHONY : ft_strchr.c.i
+
+ft_strchr.s: ft_strchr.c.s
+
+.PHONY : ft_strchr.s
+
+# target to generate assembly for a file
+ft_strchr.c.s:
+	$(MAKE) -f CMakeFiles/sunday.dir/build.make CMakeFiles/sunday.dir/ft_strchr.c.s
+.PHONY : ft_strchr.c.s
+
+ft_strlen.o: ft_strlen.c.o
+
+.PHONY : ft_strlen.o
+
+# target to build an object file
+ft_strlen.c.o:
+	$(MAKE) -f CMakeFiles/sunday.dir/build.make CMakeFiles/sunday.dir/ft_strlen.c.o
+.PHONY : ft_strlen.c.o
+
+ft_strlen.i: ft_strlen.c.i
+
+.PHONY : ft_strlen.i
+
+# target to preprocess a source file
+ft_strlen.c.i:
+	$(MAKE) -f CMakeFiles/sunday.dir/build.make CMakeFiles/sunday.dir/ft_strlen.c.i
+.PHONY : ft_strlen.c.i
+
+ft_strlen.s: ft_strlen.c.s
+
+.PHONY : ft_strlen.s
+
+# target to generate assembly for a file
+ft_strlen.c.s:
+	$(MAKE) -f CMakeFiles/sunday.dir/build.make CMakeFiles/sunday.dir/ft_strlen.c.s
+.PHONY : ft_strlen.c.s
+
 ft_struct.o: ft_struct.c.o
 
 .PHONY : ft_struct.o
@@ -390,6 +444,12 @@ help:
 	@echo "... ft_putnbr.o"
 	@echo "... ft_putnbr.i"
 	@echo "... ft_putnbr.s"
+	@echo "... ft_strchr.o"
+	@echo "... ft_strchr.i"
+	@echo "... ft_strchr.s"
+	@echo "... ft_strlen.o"
+	@echo "... ft_strlen.i"
+	@echo "... ft_strlen.s"
 	@echo "... ft_struct.o"
 	@echo "... ft_struct.i"
 	@echo "... ft_struct.s"

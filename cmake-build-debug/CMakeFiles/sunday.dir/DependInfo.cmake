@@ -9,6 +9,8 @@ set(CMAKE_DEPENDS_CHECK_C
   "/nfs/2016/i/ioleksiu/ClionProjects/sunday/ft_print_text.c" "/nfs/2016/i/ioleksiu/ClionProjects/sunday/cmake-build-debug/CMakeFiles/sunday.dir/ft_print_text.c.o"
   "/nfs/2016/i/ioleksiu/ClionProjects/sunday/ft_printf.c" "/nfs/2016/i/ioleksiu/ClionProjects/sunday/cmake-build-debug/CMakeFiles/sunday.dir/ft_printf.c.o"
   "/nfs/2016/i/ioleksiu/ClionProjects/sunday/ft_putnbr.c" "/nfs/2016/i/ioleksiu/ClionProjects/sunday/cmake-build-debug/CMakeFiles/sunday.dir/ft_putnbr.c.o"
+  "/nfs/2016/i/ioleksiu/ClionProjects/sunday/ft_strchr.c" "/nfs/2016/i/ioleksiu/ClionProjects/sunday/cmake-build-debug/CMakeFiles/sunday.dir/ft_strchr.c.o"
+  "/nfs/2016/i/ioleksiu/ClionProjects/sunday/ft_strlen.c" "/nfs/2016/i/ioleksiu/ClionProjects/sunday/cmake-build-debug/CMakeFiles/sunday.dir/ft_strlen.c.o"
   "/nfs/2016/i/ioleksiu/ClionProjects/sunday/ft_struct.c" "/nfs/2016/i/ioleksiu/ClionProjects/sunday/cmake-build-debug/CMakeFiles/sunday.dir/ft_struct.c.o"
   "/nfs/2016/i/ioleksiu/ClionProjects/sunday/ft_struct_fill.c" "/nfs/2016/i/ioleksiu/ClionProjects/sunday/cmake-build-debug/CMakeFiles/sunday.dir/ft_struct_fill.c.o"
   "/nfs/2016/i/ioleksiu/ClionProjects/sunday/main.c" "/nfs/2016/i/ioleksiu/ClionProjects/sunday/cmake-build-debug/CMakeFiles/sunday.dir/main.c.o"

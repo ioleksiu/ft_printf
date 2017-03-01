@@ -121,7 +121,7 @@ char *parse(char *s, t_pf *a)
     s = ft_width(a, s);
     s = ft_dot(a, s);
     s = ft_size(a, s);
-    if (strchr("sSpdDioOuUxXcC", *s) && *s)/*change to ft_strchr */
+    if (ft_strchr("sSpdDioOuUxXcC", *s) && *s)/*change to ft_strchr */
     {
         a->conversion = *s;
         s++;
@@ -138,7 +138,7 @@ t_pf	*struct_fill(va_list ap, char *s, t_pf *a)
             break;
         while (*s && a->conversion == '0' /*&& *s != '%'*/)
         {
-            if (strchr("hljz -+#01234567.89tsSpdDioOuUxXcC", *s) == NULL
+            if (ft_strchr("hljz -+#01234567.89tsSpdDioOuUxXcC", *s) == NULL
                 && a->conversion == '0')
             {
                 a->conversion = 'c';
@@ -149,8 +149,10 @@ t_pf	*struct_fill(va_list ap, char *s, t_pf *a)
             }
             s = parse(s,a);
         }
+        if (!(*s) && a->conversion == '0')
+            break ;
          pf_cast(a, ap);
-        if (strchr("sSpdDioOuUxXcC", *s) && *(s-1) == '%')/* A , a etc. */
+        if (ft_strchr("sSpdDioOuUxXcC", *s) && *(s-1) == '%')/* A , a etc. */
             s++;
         ft_zero_struct(a);
     }

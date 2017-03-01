@@ -44,3 +44,5 @@ int                                     ft_printf(char *format, ... );
 void                                    f_proc(char c, t_pf *a);
 void                                    pf_cast(t_pf *a, va_list ap);
 void	                                ft_putnbr(int n);/* chage soon*/
+char									*ft_strchr(const char *s, int c);
+size_t									ft_strlen(const char *s);

@@ -38,6 +38,14 @@ stdarg.h
 libft/libft.h
 /nfs/2016/i/ioleksiu/ClionProjects/sunday/libft/libft.h
 
+/nfs/2016/i/ioleksiu/ClionProjects/sunday/ft_strchr.c
+string.h
+-
+
+/nfs/2016/i/ioleksiu/ClionProjects/sunday/ft_strlen.c
+string.h
+-
+
 /nfs/2016/i/ioleksiu/ClionProjects/sunday/ft_struct.c
 ft_printf.h
 /nfs/2016/i/ioleksiu/ClionProjects/sunday/ft_printf.h
