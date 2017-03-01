@@ -121,7 +121,7 @@ char *parse(char *s, t_pf *a)
     s = ft_width(a, s);
     s = ft_dot(a, s);
     s = ft_size(a, s);
-    if (strchr("sSpdDioOuUxXcC", *s))/*change to ft_strchr */
+    if (strchr("sSpdDioOuUxXcC", *s) && *s)/*change to ft_strchr */
     {
         a->conversion = *s;
         s++;
@@ -134,6 +134,8 @@ t_pf	*struct_fill(va_list ap, char *s, t_pf *a)
     while (*s != '\0')
     {
         s = ft_print_text(a, s);
+        if (!(*s))
+            break;
         while (*s && a->conversion == '0' /*&& *s != '%'*/)
         {
             if (strchr("hljz -+#01234567.89tsSpdDioOuUxXcC", *s) == NULL
