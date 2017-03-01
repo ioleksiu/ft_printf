@@ -31,6 +31,7 @@ char	*ft_print_text(t_pf *a, char *s)
         a->i++;
 		s++;
 	}
+
 	if (*s)
 	    return(s+=1);
     return (s);
