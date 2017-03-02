@@ -171,7 +171,7 @@ void f_s(t_pf *a, va_list ap)
 
 void f_C(t_pf *a, va_list ap)
 {
-
+    f_c(a, ap);
 }
 
 intmax_t cast_d(t_pf *a, va_list ap)
