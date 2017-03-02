@@ -104,7 +104,7 @@ void f_c(t_pf *a, va_list ap)
             write(1, &sp, 1);
          //   a->i++;
         }
-    c = va_arg(ap, char);
+    c = va_arg(ap, int);
     write(1, &c, 1);
     if (a->minus != 0)
         while (l-- > 1)
