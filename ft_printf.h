@@ -44,7 +44,7 @@ char									*ft_print_text(t_pf *a, char *s);
 int                                     ft_printf(char *format, ... );
 void                                    f_proc(char c, t_pf *a);
 void                                    pf_cast(t_pf *a, va_list ap);
-void	                                ft_putnbr(int n);/* chage soon*/
+void	                                ft_putnbr(int n, t_pf *a);/* chage soon*/
 char									*ft_strchr(const char *s, int c);
 size_t									ft_strlen(const char *s);
 intmax_t                                cast_d(t_pf *a, va_list ap);

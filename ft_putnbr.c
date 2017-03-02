@@ -10,11 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 #include <unistd.h>
 
-void	ft_putnbr(int n);
+void	ft_putnbr(int n, t_pf *a);
 
-void	ft_putnbr(int n)
+void	ft_putnbr(int n, t_pf *a)
 {
 	char			p;
 	unsigned int	z;
@@ -24,15 +25,17 @@ void	ft_putnbr(int n)
 	{
 		write(1, "-", 1);
 		z = -z;
+		a->i++;
 	}
 	if (z >= 10)
 	{
-		ft_putnbr(z / 10);
-		ft_putnbr(z % 10);
+		ft_putnbr(z / 10, a);
+		ft_putnbr(z % 10, a);
 	}
 	else
 	{
 		p = z + 48;
 		write(1, &p, 1);
+		a->i++;
 	}
 }
