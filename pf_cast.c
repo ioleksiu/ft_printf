@@ -35,7 +35,8 @@ void f_D(t_pf *a, va_list ap)
 
 void f_i(t_pf *a, va_list ap)
 {
-
+    int i = cast_d(a,ap);
+    ft_putnbr(i);
 }
 
 void f_o(t_pf *a, va_list ap)
