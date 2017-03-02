@@ -18,7 +18,7 @@ int main(int ac, char **av) {
     if (ac > 1) {
         char *d = "work!";
         (void) ac;
-        /*
+/*
        printf("\n-------------------ORIGINAL----------------------\n");
         printf("\nreturns : %d\n" ,printf("Hello %%%.0+ 40s %s","word!", "ama hero"));
         printf("\nHello%%%0+232#43-23-.34#c \n", 42);
@@ -61,12 +61,17 @@ int main(int ac, char **av) {
         printf("Hello%%%0+23243-234-.3434");
         printf("\n");
         ft_printf("Hello%%%0+23243-234-.3434");
-*/
+
 
         printf("\n------------------\n");
-        printf("%5%");
+        printf("%-.5 VV v");
         printf("\n------------------\n");
-        ft_printf("%5%");
-        }
+        ft_printf("%-.5 VV v");
+
+  */
+        printf("%.2s","567");
+        printf("\n--------------------\n");
+        ft_printf("%.2s","567");
+    }
     return (0);
 }

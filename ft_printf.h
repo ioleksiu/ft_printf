@@ -46,3 +46,4 @@ void                                    pf_cast(t_pf *a, va_list ap);
 void	                                ft_putnbr(int n);/* chage soon*/
 char									*ft_strchr(const char *s, int c);
 size_t									ft_strlen(const char *s);
+intmax_t                                cast_d(t_pf *a, va_list ap);

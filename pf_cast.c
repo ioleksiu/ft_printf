@@ -21,13 +21,13 @@ void f_p(t_pf *a, va_list ap)
 {
 
 }
-
+/*
 void f_d(t_pf *a, va_list ap)
 {
     int i = va_arg(ap, int);
     ft_putnbr(i);
 }
-
+*/
 void f_D(t_pf *a, va_list ap)
 {
 
@@ -173,6 +173,27 @@ void f_C(t_pf *a, va_list ap)
 
 }
 
+intmax_t cast_d(t_pf *a, va_list ap)
+{
+    intmax_t i;
+
+    i = va_arg(ap, intmax_t);
+    if(a->size == 3)
+        return  (long)i;
+    if(a->size == 2)
+        return  (short)i;
+    if(a->size == 1)
+        return  (signed char)i;
+    if(a->size == 4)
+        return  (long long)i;
+    return (int)i;
+}
+
+void f_d(t_pf *a, va_list ap)
+{
+    int i = cast_d(a,ap);
+    ft_putnbr(i);
+}
 void    pf_cast(t_pf *a, va_list ap)
 {
     if (a->conversion == 's' || a->conversion == 'S')
