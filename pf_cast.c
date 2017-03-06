@@ -12,6 +12,8 @@
 
 #include "ft_printf.h"
 
+void f_d(t_pf *a, va_list ap);
+
 void f_S(t_pf *a, va_list ap)
 {
 
@@ -21,13 +23,7 @@ void f_p(t_pf *a, va_list ap)
 {
 
 }
-/*
-void f_d(t_pf *a, va_list ap)
-{
-    int i = va_arg(ap, int);
-    ft_putnbr(i);
-}
-*/
+
 void f_D(t_pf *a, va_list ap)
 {
 
@@ -35,7 +31,7 @@ void f_D(t_pf *a, va_list ap)
 
 void f_i(t_pf *a, va_list ap)
 {
-    f_d(a ,ap);
+    f_d(a, ap);
 }
 
 void f_o(t_pf *a, va_list ap)
@@ -126,6 +122,7 @@ void ft_put_strn(char *s, int i, t_pf *a)
         s++;
     }
 }
+
 void f_s(t_pf *a, va_list ap)
 {
     int i;
@@ -192,8 +189,9 @@ intmax_t cast_d(t_pf *a, va_list ap)
 void f_d(t_pf *a, va_list ap)
 {
     int i = cast_d(a,ap);
+
     if(a->plus == 1 && i > 0)
-        write(1, '+', 1);
+        write(1, "+", 1);
     ft_putnbr(i,a);
 }
 void    pf_cast(t_pf *a, va_list ap)
