@@ -35,8 +35,7 @@ void f_D(t_pf *a, va_list ap)
 
 void f_i(t_pf *a, va_list ap)
 {
-    int i = cast_d(a,ap);
-    ft_putnbr(i,a);
+    f_d(a ,ap);
 }
 
 void f_o(t_pf *a, va_list ap)
@@ -193,6 +192,8 @@ intmax_t cast_d(t_pf *a, va_list ap)
 void f_d(t_pf *a, va_list ap)
 {
     int i = cast_d(a,ap);
+    if(a->plus == 1 && i > 0)
+        write(1, '+', 1);
     ft_putnbr(i,a);
 }
 void    pf_cast(t_pf *a, va_list ap)
