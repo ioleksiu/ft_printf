@@ -211,12 +211,17 @@ void f_d(t_pf *a, va_list ap)
     c = ' ';
     if (a->zero == 1)
         c = '0';
-    while (n > 0)
+    while (n > 0 && a->minus == 0)
     {
         write(1, &c, 1);
         n--;
     }
     ft_putnbr(i,a);
+    while (n > 0 && a->minus == 1)
+    {
+        write(1, &c, 1);
+        n--;
+    }
 }
 void    pf_cast(t_pf *a, va_list ap)
 {
