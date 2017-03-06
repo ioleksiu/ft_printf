@@ -190,7 +190,12 @@ int count_num(int a)
 {
     int i;
 
-    i = 1;
+    i = 0;
+    if (a < 0)
+    {
+        a *= -1;
+        i++;
+    }
     while (a > 0)
     {
         a /= 10;
