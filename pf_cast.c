@@ -186,12 +186,36 @@ intmax_t cast_d(t_pf *a, va_list ap)
     return (int)i;
 }
 
+int count_num(int a)
+{
+    int i;
+
+    i = 1;
+    while (a > 0)
+    {
+        a /= 10;
+        i++;
+    }
+    return (i);
+}
+
 void f_d(t_pf *a, va_list ap)
 {
     int i = cast_d(a,ap);
+    char c;
+    int n = count_num(i);
 
     if(a->plus == 1 && i > 0)
         write(1, "+", 1);
+    n = a->width - n;
+    c = ' ';
+    if (a->zero == 1)
+        c = '0';
+    while (n > 0)
+    {
+        write(1, &c, 1);
+        n--;
+    }
     ft_putnbr(i,a);
 }
 void    pf_cast(t_pf *a, va_list ap)
