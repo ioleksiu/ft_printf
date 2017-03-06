@@ -224,7 +224,7 @@ void f_d(t_pf *a, va_list ap)
         write(1, &c, 1);
         n--;
     }
-    if (a->space == 1 && a->width == 0)
+    if (a->space == 1 && a->width == 0 && a-> minus == 0)
         write(1," ", 1);
     ft_putnbr(i,a);
     while (n > 0 && a->minus == 1)
