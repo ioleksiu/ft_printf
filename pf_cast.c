@@ -220,7 +220,7 @@ void f_d(t_pf *a, va_list ap)
     c = ' ';
     if (a->zero == 1)
         c = '0';
-    while (n > 0 && i > 0 && !(a->space == 1 && i < 0))
+    while (n > 0 && (i > 0 && a->minus == 0) && !(a->space == 1 && i < 0))
     {
         write(1, &c, 1);
         n--;
