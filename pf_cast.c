@@ -203,7 +203,9 @@ int count_num(int a)
         a /= 10;
         i++;
     }
-    return (i);
+    if (a > 0)
+        return (i);
+    return (i - 1);
 }
 
 void f_d(t_pf *a, va_list ap)
