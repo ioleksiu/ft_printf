@@ -191,6 +191,8 @@ int count_num(int a)
     int i;
 
     i = 0;
+    if (a > 0)
+        i++;
     if (a < 0)
     {
         a *= -1;
