@@ -210,9 +210,12 @@ void f_d(t_pf *a, va_list ap)
     char c;
     int n = count_num(i);
 
-    if(a->plus == 1 && i > 0)
-        write(1, "+", 1);
     n = a->width - n;
+    if(a->plus == 1 && i > 0)
+    {
+        write(1, "+", 1);
+        n--;
+    }
     c = ' ';
     if (a->zero == 1)
         c = '0';
