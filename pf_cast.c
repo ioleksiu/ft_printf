@@ -186,6 +186,22 @@ intmax_t cast_d(t_pf *a, va_list ap)
     return (int)i;
 }
 
+uintmax_t cast_du(t_pf *a, va_list ap)
+{
+    uintmax_t i;
+
+    i = va_arg(ap, uintmax_t);
+    if(a->size == 3)
+        return  (unsigned long)i;
+    if(a->size == 2)
+        return  (unsigned short)i;
+    if(a->size == 1)
+        return  (unsigned char)i;
+    if(a->size == 4)
+        return  (unsigned long long)i;
+    return (unsigned int)i;
+}
+
 int count_num(int a)
 {
     int i;
@@ -204,22 +220,92 @@ int count_num(int a)
     return (i);
 }
 
+void put_nchar(char c, int i)
+{
+    while (i > 0)
+    {
+        write(1, &c, 1);
+        i--;
+    }
+}
+void with_m()
+{
+
+}
+
+void without_m()
+{
+
+}
 void f_d(t_pf *a, va_list ap)
 {
     int i = cast_d(a,ap);
-    char c;
     int n = count_num(i);
+    int c_s = 0;
+    int c_z = 0;
 
-    //if (a->width > 0)
-        n = a->width - n;
+    c_s = a->dot_val > n ? a->dot_val : n;
+    c_s = a->width - c_s;
+    c_z = a->dot_val - n;
+    if (a->minus == 1)
+    {
+        if (a->plus == 1 && i > 0)
+            write(1, "+", 1);
+        put_nchar('0', c_z);
+        ft_putnbr(i, a);
+        put_nchar(' ', c_s);
+    }
+    else
+    {
+        if (a->space == 1)
+            write(1, ' ', 1);
+        put_nchar(' ', c_s);
+        if (a->plus == 1 && i > 0)
+            write(1, "+", 1);
+        put_nchar('0', c_z);
+        ft_putnbr(i, a);
+        //put_nchar(' ', c_s);
+
+        /*
+        if (a->plus == 1 && i > 0)
+            write(1, "+", 1);
+        //c_s = a->dot_val > n ? a->dot_val : n;
+        //c_s = a->width - c_s;
+        if (c_s > 0)
+            a->space = 0;
+        //if (a->space = 1)
+        //  write(1,' ', 1);
+        if (a->minus == 1)
+            put_nchar(' ', c_s);
+        //zero
+       // c_z = a->dot_val - n;
+        put_nchar('0', c_z);
+        if (a->minus == 0)
+            put_nchar(' ', c_s);
+        ft_putnbr(i, a);
+         */
+    }
+
+
+    /*n = a->width - n;
     if(a->plus == 1 && i > 0)
     {
         write(1, "+", 1);
         n--;
     }
     c = ' ';
-    if (a->zero == 1)
+    if (a->zero == 1 )
         c = '0';
+    if (a->zero == 1 && a->dot == 1)
+    {
+        count = a->dot_val - n;
+        while(count > 0)
+        {
+            write(1,"0", 1);
+            count--;
+            n--;
+        }
+    }
     while (n > 0 && (i > 0 && a->minus == 0) && !(a->space == 1 && i < 0))
     {
         write(1, &c, 1);
@@ -233,7 +319,9 @@ void f_d(t_pf *a, va_list ap)
         write(1, &c, 1);
         n--;
     }
+     */
 }
+
 void    pf_cast(t_pf *a, va_list ap)
 {
     if (a->conversion == 's' || a->conversion == 'S')
