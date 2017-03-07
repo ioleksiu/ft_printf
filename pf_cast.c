@@ -261,9 +261,9 @@ void f_d(t_pf *a, va_list ap)
             c_s--;
         //if (a->zero == 1)
         //{
-            if (i < 0)
-                write(1, "-", 1);
-            else if(a->plus == 1)
+          //  if (i < 0)
+              //  write(1, "-", 1);
+            if(a->plus == 1 && i > 0)
                 write(1, "+", 1);
         //}
 
