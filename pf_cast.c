@@ -259,7 +259,7 @@ void f_d(t_pf *a, va_list ap)
     {
         if (a->space == 1)
             write(1, " ", 1);
-        put_nchar(' ', c_s);
+        a->zero == 0 ? put_nchar(' ', c_s) : put_nchar(' ', c_s);
         if (a->plus == 1 && i > 0)
             write(1, "+", 1);
         put_nchar('0', c_z);
