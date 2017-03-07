@@ -259,13 +259,14 @@ void f_d(t_pf *a, va_list ap)
     {
         if (i < 0 || a->plus == 1)
             c_s--;
-        if (a->zero == 1)
-        {
+        //if (a->zero == 1)
+        //{
             if (i < 0)
                 write(1, "-", 1);
             else if(a->plus == 1)
                 write(1, "+", 1);
-        }
+        //}
+
         if (a->space == 1)
             write(1, " ", 1);
         if (a->dot == 0)// shob rabotal zero
