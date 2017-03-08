@@ -11,6 +11,20 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+void put_nchar(char c, int i, t_pf *a);
+
+int count_unum(uintmax_t a)
+{
+    int i;
+
+    i = 0;
+    while (a > 0)
+    {
+        a /= 10;
+        i++;
+    }
+    return (i);
+}
 
 void f_d(t_pf *a, va_list ap);
 
@@ -46,7 +60,37 @@ void f_O(t_pf *a, va_list ap)
 
 void f_u(t_pf *a, va_list ap)
 {
+    uintmax_t i = cast_d(a,ap);
+    int n = count_unum(i);
+    int c_s = 0;
+    int c_z = 0;
 
+    c_s = a->dot_val > n ? a->dot_val : n;
+    c_s = a->width - c_s;
+    c_z = a->dot_val - n;
+    if (a->minus == 1)/* left align */
+    {
+        if (a->plus == 1 && i > 0)
+            put_nchar('+', 1, a);
+        put_nchar('0', c_z, a);
+        ft_putnbr(i, a);
+        put_nchar(' ', c_s, a);
+    }
+    else/* right align */
+    {
+        if (i < 0 || a->plus == 1)
+            c_s--;
+        if(a->plus == 1 && i > 0)
+            put_nchar('+', 1, a);
+        if (a->space == 1 && c_s <= 0 && i > 0) // i > 0 xz
+            put_nchar(' ', 1, a);
+        if (a->dot == 0)// shob rabotal zero
+            a->zero == 0 ? put_nchar(' ', c_s, a) : put_nchar('0', c_s, a);
+        else // shob rabotal dot_val
+            put_nchar(' ', c_s, a);
+        put_nchar('0', c_z, a);
+        ft_putnbr(i, a);
+    }
 }
 
 void f_U(t_pf *a, va_list ap)
@@ -122,8 +166,6 @@ void ft_put_strn(char *s, int i, t_pf *a)
         s++;
     }
 }
-
-void put_nchar(char c, int i, t_pf *a);
 
 void f_s(t_pf *a, va_list ap)
 {
@@ -220,8 +262,7 @@ void without_m()
 }
 void f_d(t_pf *a, va_list ap)
 {
-
-    intmax_t i = cast_d(a,ap);
+    intmax_t i = cast_du(a,ap);
     int n = count_num(i);
     int c_s = 0;
     int c_z = 0;
