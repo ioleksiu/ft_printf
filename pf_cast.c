@@ -123,13 +123,32 @@ void ft_put_strn(char *s, int i, t_pf *a)
     }
 }
 
+void put_nchar(char c, int i, t_pf *a);
+
 void f_s(t_pf *a, va_list ap)
 {
-    int i;
+    int c_s;
+    int c_prec;
     char *s;
-    char sp;
 
     s = va_arg(ap, char *);
+    c_s = 0;
+    c_prec = 0;
+    if (a->dot)
+        c_prec = a->dot_val > ft_strlen(s) ? ft_strlen(s) : a->dot_val;
+    else
+        c_prec = ft_strlen(s);
+    c_s = a->width - c_prec;
+    if (a->minus)
+    {
+        ft_put_strn(s,c_prec,a);
+        a->zero == 0 ? put_nchar(' ',c_s, a) : put_nchar('0',c_s, a);
+    }
+    else
+        a->zero == 0 ? put_nchar(' ',c_s, a) : put_nchar('0',c_s, a);
+        ft_put_strn(s,c_prec,a);
+
+    /*
     if (a->width == 0 && a->dot == 0)
     {
         a->width = ft_strlen(s);
@@ -163,7 +182,8 @@ void f_s(t_pf *a, va_list ap)
             write(1, &sp, 1);
             a->i++;
         }
-   }
+   */
+     }
 
 void f_C(t_pf *a, va_list ap)
 {
