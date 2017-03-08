@@ -220,12 +220,13 @@ int count_num(int a)
     return (i);
 }
 
-void put_nchar(char c, int i)
+void put_nchar(char c, int i, t_pf *a)
 {
     while (i > 0)
     {
         write(1, &c, 1);
         i--;
+        a->i++;
     }
 }
 void with_m()
@@ -250,89 +251,26 @@ void f_d(t_pf *a, va_list ap)
     if (a->minus == 1)
     {
         if (a->plus == 1 && i > 0)
-            write(1, "+", 1);
-        put_nchar('0', c_z);
+            put_nchar('+', 1, a);
+        put_nchar('0', c_z, a);
         ft_putnbr(i, a);
-        put_nchar(' ', c_s);
+        put_nchar(' ', c_s, a);
     }
     else
     {
         if (i < 0 || a->plus == 1)
             c_s--;
-        //if (a->zero == 1)
-        //{
-          //  if (i < 0)
-              //  write(1, "-", 1);
-            if(a->plus == 1 && i > 0)
-                write(1, "+", 1);
-        //}
-
+        if(a->plus == 1 && i > 0)
+            put_nchar('+', 1, a);
         if (a->space == 1 && c_s <= 0 && i > 0) // i > 0 xz
-            write(1, " ", 1);
+            put_nchar(' ', 1, a);
         if (a->dot == 0)// shob rabotal zero
-            a->zero == 0 ? put_nchar(' ', c_s) : put_nchar('0', c_s);
+            a->zero == 0 ? put_nchar(' ', c_s, a) : put_nchar('0', c_s, a);
         else // shob rabotal dot_val
-            put_nchar(' ', c_s);
-        //if (a->plus == 1 && i > 0)
-          //  write(1, "+", 1);
-        put_nchar('0', c_z);
+            put_nchar(' ', c_s, a);
+        put_nchar('0', c_z, a);
         ft_putnbr(i, a);
-        //put_nchar(' ', c_s);
-
-        /*
-        if (a->plus == 1 && i > 0)
-            write(1, "+", 1);
-        //c_s = a->dot_val > n ? a->dot_val : n;
-        //c_s = a->width - c_s;
-        if (c_s > 0)
-            a->space = 0;
-        //if (a->space = 1)
-        //  write(1,' ', 1);
-        if (a->minus == 1)
-            put_nchar(' ', c_s);
-        //zero
-       // c_z = a->dot_val - n;
-        put_nchar('0', c_z);
-        if (a->minus == 0)
-            put_nchar(' ', c_s);
-        ft_putnbr(i, a);
-         */
     }
-
-
-    /*n = a->width - n;
-    if(a->plus == 1 && i > 0)
-    {
-        write(1, "+", 1);
-        n--;
-    }
-    c = ' ';
-    if (a->zero == 1 )
-        c = '0';
-    if (a->zero == 1 && a->dot == 1)
-    {
-        count = a->dot_val - n;
-        while(count > 0)
-        {
-            write(1,"0", 1);
-            count--;
-            n--;
-        }
-    }
-    while (n > 0 && (i > 0 && a->minus == 0) && !(a->space == 1 && i < 0))
-    {
-        write(1, &c, 1);
-        n--;
-    }
-    if (a->space == 1 && a->width == 0 && a-> minus == 0 && !(a->space == 1 && i < 0))
-        write(1," ", 1);
-    ft_putnbr(i,a);
-    while (n > 0 && a->minus == 1)
-    {
-        write(1, &c, 1);
-        n--;
-    }
-     */
 }
 
 void    pf_cast(t_pf *a, va_list ap)
