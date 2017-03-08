@@ -12,7 +12,24 @@
 
 #include "ft_printf.h"
 void put_nchar(char c, int i, t_pf *a);
+void	ft_put_unbr(uintmax_t n, t_pf *a)
+{
+    char			p;
+    unsigned int	z;
 
+    z = n;
+    if (z >= 10)
+    {
+        ft_putnbr(z / 10, a);
+        ft_putnbr(z % 10, a);
+    }
+    else
+    {
+        p = z + 48;
+        write(1, &p, 1);
+        a->i++;
+    }
+}
 int count_unum(uintmax_t a)
 {
     int i;
@@ -73,7 +90,7 @@ void f_u(t_pf *a, va_list ap)
         if (a->plus == 1 && i > 0)
             put_nchar('+', 1, a);
         put_nchar('0', c_z, a);
-        ft_putnbr(i, a);
+        ft_put_unbr(i, a);
         put_nchar(' ', c_s, a);
     }
     else/* right align */
@@ -89,7 +106,7 @@ void f_u(t_pf *a, va_list ap)
         else // shob rabotal dot_val
             put_nchar(' ', c_s, a);
         put_nchar('0', c_z, a);
-        ft_putnbr(i, a);
+        ft_put_unbr(i, a);
     }
 }
 
