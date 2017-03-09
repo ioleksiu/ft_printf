@@ -282,7 +282,7 @@ void without_m()
 }
 void f_d(t_pf *a, va_list ap)
 {
-    intmax_t i = cast_du(a,ap);
+    intmax_t i = cast_d(a,ap);
     int n = count_num(i);
     int c_s = 0;
     int c_z = 0;
