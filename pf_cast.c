@@ -18,7 +18,7 @@ uintmax_t cast_du(t_pf *a, va_list ap);
 void	ft_put_unbr(uintmax_t n, t_pf *a)
 {
     char			p;
-    unsigned int	z;
+    uintmax_t	z;
 
     z = n;
     if (z >= 10)
