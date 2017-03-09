@@ -235,17 +235,23 @@ intmax_t cast_d(t_pf *a, va_list ap)
     return va_arg(ap, int);
 }
 
+//{"none"0, "hh"1, "h"2, "l"3, "ll"4, "j"5, "z"6};
 uintmax_t cast_du(t_pf *a, va_list ap)
 {
+    void * i;
+    
+    i = va_arg(ap, void *);
     if(a->size == 3)
-        return  va_arg(ap, unsigned long);
+        return  (unsigned long) i;
     if(a->size == 2)
-        return  va_arg(ap, unsigned short);
+        return  (unsigned short) i;
     if(a->size == 1)
-        return  va_arg(ap, unsigned char);
+        return  (unsigned char) i;
     if(a->size == 4)
-        return  va_arg(ap, unsigned long long);
-    return va_arg(ap, size_t);
+        return  (unsigned long long) i;
+    if(a->size == 5)
+        return  (uintmax_t) i;
+    return (size_t) i;
 }
 
 int count_num(int a)
