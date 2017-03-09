@@ -78,6 +78,7 @@ void f_O(t_pf *a, va_list ap)
 
 void f_u(t_pf *a, va_list ap)
 {
+    /*
     uintmax_t i = cast_du(a,ap);
     int n = count_unum(i);
     int c_s = 0;
@@ -109,6 +110,7 @@ void f_u(t_pf *a, va_list ap)
         put_nchar('0', c_z, a);
         ft_put_unbr(i, a);
     }
+     */
 }
 
 void f_U(t_pf *a, va_list ap)
