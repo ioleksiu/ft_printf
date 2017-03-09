@@ -78,7 +78,7 @@ void f_O(t_pf *a, va_list ap)
 
 void f_u(t_pf *a, va_list ap)
 {
-    ft_put_unbr(va_arg(ap, int), a);
+    ft_put_unbr(va_arg(ap, unsigned long), a);
   //  write(1, "hello", 5);
     //uintmax_t i = cast_du(a,ap);
     //int n = count_unum(i);
