@@ -239,7 +239,7 @@ intmax_t cast_d(t_pf *a, va_list ap)
 uintmax_t cast_du(t_pf *a, va_list ap)
 {
     void * i;
-    
+
     i = va_arg(ap, void *);
     if(a->size == 3)
         return  (unsigned long) i;

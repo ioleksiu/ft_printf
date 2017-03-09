@@ -13,12 +13,12 @@
 #include "ft_printf.h"
 #include <unistd.h>
 
-void	ft_putnbr(int n, t_pf *a);
+void	ft_putnbr(intmax_t n, t_pf *a);
 
-void	ft_putnbr(int n, t_pf *a)
+void	ft_putnbr(intmax_t n, t_pf *a)
 {
 	char			p;
-	unsigned int	z;
+    intmax_t    	z;
 
 	z = n;
 	if (n < 0)
