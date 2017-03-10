@@ -116,7 +116,9 @@ void f_S(t_pf *a, va_list ap)
 
 void f_p(t_pf *a, va_list ap)
 {
-
+    write(1,"0x",2);
+    a->i++;
+    ft_putstr(ft_itoa_base(va_arg(ap,unsigned long),16),a);
 }
 
 void f_D(t_pf *a, va_list ap)
