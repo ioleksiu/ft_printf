@@ -189,12 +189,22 @@ void f_U(t_pf *a, va_list ap)
 void f_x(t_pf *a, va_list ap)
 {
     uintmax_t i = cast_du(a,ap);
+    if (a->hash)
+    {
+        write(1, "0x", 2);
+        a->i+=2;
+    }
     ft_putstr(ft_itoa_base(i,16),a);
 }
 
 void f_X(t_pf *a, va_list ap)
 {
     uintmax_t i = cast_du(a,ap);
+    if (a->hash)
+    {
+        write(1, "0X", 2);
+        a->i+=2;
+    }
     ft_putstr(ft_itoa_base_1(i,16),a);
 }
 
@@ -207,17 +217,11 @@ void f_proc(char c, t_pf *a)
     sp = (char) ((a->zero == 1 && a->minus != 1) ? '0' : ' ');
     if (a->minus == 0)
         while (l-- > 1)
-        {
             write(1, &sp, 1);
-           // a->i++;//
-        }
     write(1, &c, 1);
     if (a->minus != 0)
         while (l-- > 1)
-        {
             write(1, &sp, 1);
-           // a->i++;
-        }
     a->width > 0 ?  (a->i = a->i + a->width) : (a->i = a->i + 1) ;
 }
 void f_c(t_pf *a, va_list ap)
@@ -230,18 +234,12 @@ void f_c(t_pf *a, va_list ap)
     sp = (char) ((a->zero == 1 && a->minus != 1) ? '0' : ' ');
     if (a->minus == 0)
         while (l-- > 1)
-        {
             write(1, &sp, 1);
-         //   a->i++;
-        }
     c = va_arg(ap, int);
     write(1, &c, 1);
     if (a->minus != 0)
         while (l-- > 1)
-        {
             write(1, &sp, 1);
-          //  a->i++;
-        }
     a->width > 0 ?  (a->i = a->i + a->width) : (a->i = a->i + 1) ;
 }
 
@@ -271,12 +269,12 @@ void f_s(t_pf *a, va_list ap)
     else
         c_prec = ft_strlen(s);
     c_s = a->width - c_prec;
-    if (a->minus == 1)
+    if (a->minus == 1)/* left align */
     {
         ft_put_strn(s,c_prec,a);
         a->zero == 0 ? put_nchar(' ',c_s, a) : put_nchar('0',c_s, a);
     }
-    if (a->minus == 0)
+    if (a->minus == 0)/* right align */
     {
         a->zero == 0 ? put_nchar(' ', c_s, a) : put_nchar('0', c_s, a);
         ft_put_strn(s, c_prec, a);
