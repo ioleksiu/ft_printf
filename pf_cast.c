@@ -259,7 +259,6 @@ void ft_put_strn(char *s, int i, t_pf *a)
 
 void f_s(t_pf *a, va_list ap)
 {
-	/*
     int c_s;
     int c_prec;
     char *s;
@@ -282,7 +281,6 @@ void f_s(t_pf *a, va_list ap)
         a->zero == 0 ? put_nchar(' ', c_s, a) : put_nchar('0', c_s, a);
         ft_put_strn(s, c_prec, a);
     }
-    */
 }
 
 void f_C(t_pf *a, va_list ap)
