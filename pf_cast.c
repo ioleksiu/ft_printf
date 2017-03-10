@@ -257,7 +257,7 @@ void ft_put_strn(char *s, int i, t_pf *a)
 {
     if (!s)
     {
-        ft_put_strn("(null)\0",7 , a);
+        ft_put_strn("(null)\0",6 , a);
         return ;
     }
     while (i--)
