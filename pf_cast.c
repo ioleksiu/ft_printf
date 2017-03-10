@@ -134,7 +134,7 @@ void f_o(t_pf *a, va_list ap)
     uintmax_t i = cast_du(a,ap);
     if(a->hash)
     {
-        write(1,'0', 1);
+        write(1,"0", 1);
         a->i++;
     }
     ft_putstr(ft_itoa_base(i,8),a);
