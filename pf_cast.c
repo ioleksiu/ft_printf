@@ -132,7 +132,7 @@ void f_i(t_pf *a, va_list ap)
 void f_o(t_pf *a, va_list ap)
 {
     uintmax_t i = cast_du(a,ap);
-    if(a->hash)
+    if(a->hash && i > 0)
     {
         write(1,"0", 1);
         a->i++;
