@@ -15,6 +15,41 @@ void put_nchar(char c, int i, t_pf *a);
 void f_d(t_pf *a, va_list ap);
 uintmax_t cast_du(t_pf *a, va_list ap);
 
+void	ft_putstr(char const *s)
+{
+    if (s)
+        while (*s)
+        {
+            write(1, s, 1);
+            s++;
+        }
+}
+
+void		f(int value, int base, char *str, int *i)
+{
+    char	*tmp;
+
+    tmp = "0123456789abcdef";
+    if (value <= -base || value >= base)
+        f(value / base, base, str, i);
+    str[(*i)++] = tmp[(value % base) < 0 ? -(value % base) : (value % base)];
+}
+
+char		*ft_itoa_base(int value, int base)
+{
+    int		i;
+    char	*str;
+
+    i = 0;
+    if (base < 2 || base > 16 || !(str = (char*)malloc(32)))
+        return (0);
+    if (base == 10 && value < 0)
+        str[i++] = '-';
+    f(value, base, str, &i);
+    str[i] = '\0';
+    return (str);
+}
+
 void	ft_put_unbr(uintmax_t n, t_pf *a)
 {
     char			p;
@@ -124,7 +159,8 @@ void f_U(t_pf *a, va_list ap)
 
 void f_x(t_pf *a, va_list ap)
 {
-
+    uintmax_t i = cast_du(a,ap);
+    ft_putstr(ft_itoa_base(i,16));
 }
 
 void f_X(t_pf *a, va_list ap)
