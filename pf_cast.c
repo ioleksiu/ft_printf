@@ -251,9 +251,15 @@ void f_c(t_pf *a, va_list ap)
 }
 
 /* ========================================================= */
+void ft_put_strn(char *s, int i, t_pf *a);
 
 void ft_put_strn(char *s, int i, t_pf *a)
 {
+    if (!s)
+    {
+        ft_put_strn("(null)\0",7 , a);
+        return ;
+    }
     while (i--)
     {
         write(1, s, 1);
@@ -267,14 +273,16 @@ void f_s(t_pf *a, va_list ap)
     int c_s;
     int c_prec;
     char *s;
+    int i ;
 
     s = va_arg(ap, char *);
+    i = ft_strlen(s);
     c_s = 0;
     c_prec = 0;
     if (a->dot)
-        c_prec = (a->dot_val > ft_strlen(s) ? ft_strlen(s) : a->dot_val);
+        c_prec = (a->dot_val > i ? i : a->dot_val);
     else
-        c_prec = ft_strlen(s);
+        c_prec = i;
     c_s = a->width - c_prec;
     if (a->minus == 1)/* left align */
     {
