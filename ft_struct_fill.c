@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
+void b_n(t_pf *a, va_list ap);
 char		*ft_flags(t_pf *a, char *s)
 {
 		if (*s == '-')
@@ -136,6 +136,11 @@ t_pf	*struct_fill(va_list ap, char *s, t_pf *a)
         s = ft_print_text(a, s);
         if (!(*s))
             break;
+        if (*s == 'n')
+        {
+            b_n(a,ap);
+            s++;
+        }
         while (*s && a->conversion == '0' /*&& *s != '%'*/)
         {
             if (ft_strchr("hljz -+#01234567.89tsSpdDioOuUxXcC", *s) == NULL

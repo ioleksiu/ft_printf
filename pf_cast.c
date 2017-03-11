@@ -369,6 +369,15 @@ void without_m()
 {
 
 }
+
+void b_n(t_pf *a, va_list ap)
+{
+    int *res;
+
+    res = va_arg(ap,int*);
+    *res = a->i;
+}
+
 void f_d(t_pf *a, va_list ap)
 {
     intmax_t i = cast_d(a,ap);
