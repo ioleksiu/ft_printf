@@ -66,7 +66,7 @@ char	*ft_dot(t_pf *a, char *s)
 	}
     if (*s == '.' && !(ft_isdigit(*(s + 1))))
     {
-        a->dot = 0;
+        a->dot = 1;
         a->dot_val = 0;
         return(s+1);
     }
