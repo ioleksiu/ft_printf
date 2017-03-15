@@ -16,9 +16,12 @@ int    ft_printf(char *format, ... )
 {
     t_pf	*a;
     va_list ap;
+    int i;
 
     va_start(ap, format);
 
     a = struct_fill(ap,format,ft_struct());
-    return(a->i);
+    i = a->i;
+    free(a);
+    return(i);
 }

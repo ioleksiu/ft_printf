@@ -15,6 +15,8 @@ void put_nchar(char c, int i, t_pf *a);
 void f_d(t_pf *a, va_list ap);
 uintmax_t cast_du(t_pf *a, va_list ap);
 void		f(uintmax_t value, uintmax_t base, char *str, int *i);
+uintmax_t cast_d_u(t_pf *a, va_list ap);
+
 
 void	ft_putstr(char const *s, t_pf *a)
 {
@@ -41,6 +43,7 @@ char		*ft_itoa_base(uintmax_t value, uintmax_t base)
 {
     int		i;
     char	*str;
+    char    *res;
 
     i = 0;
     if (base < 2 || base > 16 || !(str = (char*)malloc(32)))
@@ -49,7 +52,9 @@ char		*ft_itoa_base(uintmax_t value, uintmax_t base)
         str[i++] = '-';
     f(value, base, str, &i);
     str[i] = '\0';
-    return (str);
+    res = str;
+    free(str);
+    return (res);
 }
 //for X
 void		f1(uintmax_t value, uintmax_t base, char *str, int *i)
@@ -66,6 +71,7 @@ char		*ft_itoa_base_1(uintmax_t value, uintmax_t base)
 {
     int		i;
     char	*str;
+    char    *res;
 
     i = 0;
     if (base < 2 || base > 16 || !(str = (char*)malloc(32)))
@@ -74,7 +80,36 @@ char		*ft_itoa_base_1(uintmax_t value, uintmax_t base)
         str[i++] = '-';
     f1(value, base, str, &i);
     str[i] = '\0';
-    return (str);
+    res = str;
+    free(str);
+    return (res);
+}
+void		f4(uintmax_t value, uintmax_t base, char *str, int *i)
+{
+    char	*tmp;
+
+    tmp = "0123456789abcdef";
+    if (value >= base || -value <= -base)
+        f4(value / base, base, str, i);
+    str[(*i)++] = tmp[(value % base) < 0 ? -(value % base) : (value % base)];
+}
+
+char		*ft_itoa_base4(uintmax_t value, uintmax_t base)
+{
+    int		i;
+    char	*str;
+    char    *res;
+
+    i = 0;
+    if (base < 2 || base > 16 || !(str = (char*)malloc(32)))
+        return (0);
+    if (base == 10 && value < 0)
+        str[i++] = '-';
+    f4(value, base, str, &i);
+    str[i] = '\0';
+    res = str;
+    free(str);
+    return (res);
 }
 ////
 void	ft_put_unbr(uintmax_t n, t_pf *a)
@@ -117,6 +152,7 @@ void f_p(t_pf *a, va_list ap)
 {
     write(1,"0x",2);
     a->i++;
+
     ft_putstr(ft_itoa_base(va_arg(ap,unsigned long),16),a);
 }
 
@@ -207,8 +243,8 @@ void f_u(t_pf *a, va_list ap)
     c_z = a->dot_val - n;
     if (a->minus == 1)
     {
-      if (a->plus == 1 && i > 0)
-            put_nchar('+', 1, a);
+      //if (a->plus == 1 && i > 0)
+           // put_nchar('+', 1, a);
         put_nchar('0', c_z, a);
      ft_put_unbr(i, a);
      put_nchar(' ', c_s, a);
@@ -218,10 +254,10 @@ void f_u(t_pf *a, va_list ap)
     {
         if (i < 0 || a->plus == 1)
             c_s--;
-        if (a->plus == 1 && i > 0)
-            put_nchar('+', 1, a);
-        if (a->space == 1 && c_s <= 0 && i > 0) // i > 0 xz
-            put_nchar(' ', 1, a);
+        //if (a->plus == 1 && i > 0)
+            //put_nchar('+', 1, a);
+        //if (a->space == 1 && c_s <= 0 && i > 0) // i > 0 xz
+           // put_nchar(' ', 1, a);
         if (a->dot == 0)// shob rabotal zero
             a->zero == 0 ? put_nchar(' ', c_s, a) : put_nchar('0', c_s, a);
         else // shob rabotal dot_val
@@ -233,7 +269,7 @@ void f_u(t_pf *a, va_list ap)
 
 void f_U(t_pf *a, va_list ap)
 {
-    long i = cast_du(a,ap);
+    long i = (long)va_arg(ap,void*);
     int n = count_unum(i);
     int c_s = 0;
     int c_z = 0;
@@ -243,8 +279,8 @@ void f_U(t_pf *a, va_list ap)
     c_z = a->dot_val - n;
     if (a->minus == 1)
     {
-        if (a->plus == 1 && i > 0)
-            put_nchar('+', 1, a);
+        //if (a->plus == 1 && i > 0)
+          //  put_nchar('+', 1, a);
         put_nchar('0', c_z, a);
         ft_put_unbr(i, a);
         put_nchar(' ', c_s, a);
@@ -254,8 +290,8 @@ void f_U(t_pf *a, va_list ap)
     {
         if (i < 0 || a->plus == 1)
             c_s--;
-        if (a->plus == 1 && i > 0)
-            put_nchar('+', 1, a);
+       // if (a->plus == 1 && i > 0)
+           // put_nchar('+', 1, a);
         if (a->space == 1 && c_s <= 0 && i > 0) // i > 0 xz
             put_nchar(' ', 1, a);
         if (a->dot == 0)// shob rabotal zero
@@ -273,8 +309,8 @@ void f_x(t_pf *a, va_list ap)//
     int c_z = 0;
     int n ;
 
-    uintmax_t i = cast_du(a,ap);//
-    n = count_unum(i);
+    intmax_t i = cast_du(a,ap);//
+    n = count_num(i);
     c_s = a->dot_val > n ? a->dot_val : n;
     c_s = a->width - c_s;
     c_z = a->dot_val - n;
@@ -282,18 +318,20 @@ void f_x(t_pf *a, va_list ap)//
     {
         if (a->hash && i > 0)
             c_s -=2;
-        if (a->zero == 0)
-            put_nchar(' ', c_s, a);
+        //if (a->zero == 0)
+           // put_nchar(' ', 1, a);
         if (a->hash && i > 0)
         {
             write(1, "0x", 2);
             a->i += 2;
             //c_s -= 2;
         }
+        if (i == 0)
+            put_nchar('0', 1, a);
         if (a->zero == 1)
             put_nchar('0', c_s, a);
-        if (!(a->dot == 1 && a->dot_val == 0))
-            ft_putstr(ft_itoa_base(i, 16), a);
+        if (!(a->dot == 1 && a->dot_val == 0) && i != 0)
+            ft_putstr(ft_itoa_base4(i, 16), a);
     }
     else
     {
@@ -305,10 +343,12 @@ void f_x(t_pf *a, va_list ap)//
             a->i += 2;
             c_s -= 2;
         }
+        if (i == 0)
+            put_nchar('0', 1, a);
         //if (a->zero == 1)
          //   put_nchar('0', c_s, a);
-        if (!(a->dot == 1 && a->dot_val == 0))
-            ft_putstr(ft_itoa_base(i, 16), a);
+        if (!(a->dot == 1 && a->dot_val == 0) && i != 0)
+            ft_putstr(ft_itoa_base4(i, 16), a);
         //if (a->zero == 0)
             put_nchar(' ', c_s, a);
     }
@@ -316,7 +356,7 @@ void f_x(t_pf *a, va_list ap)//
 
 void f_X(t_pf *a, va_list ap)//ЫЩ
 {
-    uintmax_t i = cast_du(a,ap);
+    intmax_t i = cast_d(a,ap);
     if (a->hash)
     {
         write(1, "0X", 2);
@@ -367,7 +407,7 @@ void ft_put_strn(char *s, int i, t_pf *a)
 {
     if (!s)
     {
-        ft_put_strn("(null)\0",6 , a);
+        ft_put_strn("(null)\0", 6, a);/*mojet bit huinia s 6 */
         return ;
     }
     while (i--)
@@ -397,7 +437,7 @@ void f_s(t_pf *a, va_list ap)
     if (a->minus == 1)/* left align */
     {
         ft_put_strn(s,c_prec,a);
-        a->zero == 0 ? put_nchar(' ',c_s, a) : put_nchar('0',c_s, a);
+       /* a->zero == 0 ? */put_nchar(' ',c_s, a) /*: put_nchar('0',c_s, a)*/;
     }
     if (a->minus == 0)/* right align */
     {
@@ -413,19 +453,48 @@ void f_C(t_pf *a, va_list ap)
 
 intmax_t cast_d(t_pf *a, va_list ap)
 {
+    intmax_t j;
     if(a->size == 3)
         return  va_arg(ap, long);
     if(a->size == 2)
-        return  va_arg(ap, short);
+        return  (short)(va_arg(ap, int));/*tennessee edition*/
     if(a->size == 1)
-        return  va_arg(ap, signed char);
+        return  (char)(va_arg(ap, int)); /*tennessee edition*/
     if(a->size == 4)
         return  va_arg(ap, long long);
+    if(a->size == 5) {/*6*/
+        j = va_arg(ap, size_t);
+        return (j);
+    }
+    if(a->size == 6)/*5*/
+        return  va_arg(ap, intmax_t);
     return va_arg(ap, int);
-}
+} /* int max - j, z- size t*/
 
 //{"none"0, "hh"1, "h"2, "l"3, "ll"4, "j"5, "z"6};
 uintmax_t cast_du(t_pf *a, va_list ap)
+{
+    //void * i;
+
+    //i = va_arg(ap, void *);
+    if(a->size == 3)
+        return  va_arg(ap,unsigned long);
+    if(a->size == 2)
+        return   (unsigned short)va_arg(ap,unsigned int);
+    if(a->size == 1)
+        return  (unsigned char)va_arg(ap,unsigned int);
+    if(a->size == 4)
+        return  va_arg(ap,unsigned long long) ;
+    if(a->size == 6)/* 5*/
+        return  va_arg(ap,uintmax_t);
+    if(a->size == 5)/*6*/
+        return va_arg(ap,size_t);// changed
+    return  va_arg(ap, unsigned int);
+}
+/* */
+
+//{"none"0, "hh"1, "h"2, "l"3, "ll"4, "j"5, "z"6};
+uintmax_t cast_d_u(t_pf *a, va_list ap)
 {
     void * i;
 
@@ -438,10 +507,11 @@ uintmax_t cast_du(t_pf *a, va_list ap)
         return  (unsigned char) i;
     if(a->size == 4)
         return  (unsigned long long) i;
-    if(a->size == 5)
+    if(a->size == 6)/* 5*/
         return  (uintmax_t) i;
-    return (unsigned int) i;// changed
+    return (unsigned long) i;// changed
 }
+
 
 int count_num(int a)
 {
@@ -488,7 +558,8 @@ void b_n(t_pf *a, va_list ap)
     *res = a->i;
 }
 
-void f_d(t_pf *a, va_list ap)
+void f_d(t_pf *a, va_list ap
+)
 {
     intmax_t i = cast_d(a,ap);
     int n = count_num(i);
@@ -497,17 +568,21 @@ void f_d(t_pf *a, va_list ap)
 
     c_s = a->dot_val > n ? a->dot_val : n;
     c_s = a->width - c_s;
+    if(a->plus == 1 && a->minus == 0 && i > 0)
+        c_s--;
     c_z = a->dot_val - n;
     if (a->minus == 1)/* left align */
     {
        // put_nchar('0', c_z, a);//move here
-        if (a->plus == 1 && i > 0)
+        if (a->plus == 1 && i >= 0)
         {
             put_nchar('+', 1, a);
             c_s--;
         }
+        if (i < 0)
+            put_nchar('-', 1, a);
         put_nchar('0', c_z, a);
-        if ((a->dot == 1 && a->dot_val != 0) || a->dot == 0)
+        //if ((a->dot == 1 && a->dot_val != 0 && a->dot_val != -1) || a->dot == 0)
             ft_putnbr(i, a);
         put_nchar(' ', c_s, a);
     }
@@ -517,16 +592,20 @@ void f_d(t_pf *a, va_list ap)
            // c_s--; commented
         //if (a->plus == 1 && i > 0)
           //  put_nchar('+', 1, a); commented
-        if (a->space == 1 && c_s <= 0 && i > 0) // i > 0 xz
+        if (i < 0 && a->zero == 1)
+          put_nchar('-', 1, a);
+        if (a->space == 1 && c_s <= 0 && i > 0 && a->plus == 0) // i > 0 xz
             put_nchar(' ', 1, a);
         if (a->dot == 0)// shob rabotal zero
             a->zero == 0 ? put_nchar(' ', c_s, a) : put_nchar('0', c_s, a);
         else // shob rabotal dot_val
             put_nchar(' ', c_s, a);
-        if (a->plus == 1 && i > 0)
+        if (a->plus == 1 && i >= 0)
             put_nchar('+', 1, a);
+        if (i < 0 && i < 0 && a->zero == 0)
+            put_nchar('-', 1, a);
         put_nchar('0', c_z, a);
-        if ((a->dot == 1 && a->dot_val != 0) || a->dot == 0)
+       // if ((a->dot == 1 && a->dot_val != 0 && a->dot_val != -1) || a->dot == 0) /* !!!! */
             ft_putnbr(i, a);
     }
     /*

@@ -23,11 +23,12 @@ void	ft_putnbr(intmax_t n, t_pf *a)
 	z = n;
 	if (n < 0)
 	{
-		write(1, "-", 1);
+		//write(1, "-", 1);
 		z = -z;
-		a->i++;
+		//a->i++;
 	}
-	if (z >= 10)
+	//if (z >= 10)
+    if(z>= 10 || z <= -10)
 	{
 		ft_putnbr(z / 10, a);
 		ft_putnbr(z % 10, a);

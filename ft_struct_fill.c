@@ -67,33 +67,33 @@ char	*ft_dot(t_pf *a, char *s)
     if (*s == '.' && !(ft_isdigit(*(s + 1))))
     {
         a->dot = 1;
-        a->dot_val = 0;
+        a->dot_val = -1;/* changed 0 to -1 */
         return(s+1);
     }
 	return(s);
 }
-
+/* hh - 1, h-2, l-3 , ll-4, z-5, j - 6 */
 char	*ft_size(t_pf *a ,char *s)
 {
 	if (*s == 'h' || *s == 'l' || *s == 'j' || *s == 'z')
 	{
-		if (*s == 'h' && *(s + 1) != 'h' && *(s - 1) != 'h')
+		if (*s == 'h' && *(s + 1) != 'h' && *(s - 1) != 'h' && a->size < 2)
 			a->size = 2;
-		if (*s == 'h' && ((*(s + 1) == 'h' || *(s - 1) == 'h')))
+		if (*s == 'h' && ((*(s + 1) == 'h' || *(s - 1) == 'h')) && a->size < 1)
 		{
 			a->size = 1;
 			s++;
 		}
-		if (*s == 'l' && *(s + 1) != 'l' && *(s - 1) != 'l')
+		if (*s == 'l' && *(s + 1) != 'l' && *(s - 1) != 'l' && a->size < 3)
 			a->size = 3;
-		if (*s == 'l' && *(s + 1) == 'l')
+		if (*s == 'l' && *(s + 1) == 'l' && a->size < 4)
 		{
 			a->size = 4;
 			s++;
 		}
-		if (*s == 'j')
+		if (*s == 'z' && a->size < 5)
 			a->size = 5;
-		if (*s == 'z')
+		if (*s == 'j' && a->size < 6)
 			a->size = 6;
 		s++;
 	}
