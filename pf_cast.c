@@ -576,7 +576,6 @@ void f_d(t_pf *a, va_list ap
     intmax_t i = cast_d(a,ap);
     int n = count_num(i);
     int c_s = 0;
-    //int c_z = 0;
     int c_pr = 0;
 
     if (i > 0)
@@ -585,18 +584,10 @@ void f_d(t_pf *a, va_list ap
         c_pr = a->dot_val > n - 1 ? (a->dot_val + 1 - n) : 0;
     if (a->width > n + c_pr)
         c_s = a->width - n - c_pr;
-    //if (i < 0 || (i > 0 && a->plus == 1))
-      //  c_s-=2;
-
-    //c_s = a->dot_val > n ? a->dot_val : n;
-    //c_s = a->width - c_s;
-    //c_pr = a->
     if(a->plus == 1 && a->minus == 0 && i > 0)
         c_s--;
-    //c_z = a->dot_val - n;
     if (a->minus == 1)/* left align */
     {
-       // put_nchar('0', c_z, a);//move here
         if (a->plus == 1 && i >= 0)
         {
             put_nchar('+', 1, a);
@@ -605,40 +596,21 @@ void f_d(t_pf *a, va_list ap
         if (i < 0)
             put_nchar('-', 1, a);
         put_nchar('0', c_pr, a);
-        //if ((a->dot == 1 && a->dot_val != 0 && a->dot_val != -1) || a->dot == 0)
         if((a->dot_val != -1 || (a->dot_val == -1 && a->hash == 1)) || a->width == 0 && i > 0) /**/
             ft_putnbr(i, a);
         put_nchar(' ', c_s, a);
     }
     else/* right align */
     {
-        //if (a->zero == 0 || a->hash == 1)
-      //  {
-          //  put_nchar(' ', c_s, a);
-          //  c_s = 0;
-      //  }
-        //if (i < 0 || a->plus == 1) // commented
-            //c_s--; //commented
-        //if (a->plus == 1 && i > 0)
-          //  put_nchar('+', 1, a); commented
         if (a->space == 1 && c_s <= 0 && i > 0 && a->plus == 0) // i > 0 xz
             put_nchar(' ', 1, a);
-        if (a->zero == 0 || a->hash == 1)
+        if (a->zero == 0 || a->hash == 1 || a->width > a->dot_val)
         {
             put_nchar(' ', c_s, a);
             c_s = 0;
         }
-        //if (a->dot_val > n)
-           // put_nchar(' ', c_s - a->dot_val - n, a);
-        //else
-           // i > 0 ? put_nchar(' ', (a->width - n), a) : put_nchar(' ', (a->width - n - 1), a);
         if (i < 0 && a->zero == 1)
           put_nchar('-', 1, a);
-        //if (a->space == 1 && c_s <= 0 && i > 0 && a->plus == 0) // i > 0 xz
-            //put_nchar(' ', 1, a);
-        //if (a->dot == 0)// shob rabotal zero
-        //    a->zero == 0 ? put_nchar(' ', c_s, a) : put_nchar('0', c_s, a);
-        //else // shob rabotal dot_val
         if (a->plus == 1 && i >= 0)
             put_nchar('+', 1, a);
         if (i < 0 && i < 0 && a->zero == 0)
@@ -646,13 +618,7 @@ void f_d(t_pf *a, va_list ap
         if (a->zero == 1 /*&& a->zero != 1*/)
             put_nchar('0',c_s,a);
         put_nchar('0', c_pr, a);
-       // if (a->plus == 1 && i >= 0)
-          //  put_nchar('+', 1, a);
-        //if (i < 0 && i < 0 && a->zero == 0)
-          //  put_nchar('-', 1, a);
-        //put_nchar('0', c_z, a);
-       // if ((a->dot == 1 && a->dot_val != 0 && a->dot_val != -1) || a->dot == 0) /* !!!! */
-        if((a->dot_val != -1 || (a->dot_val == -1 && a->hash == 1)) || a->width == 0 && i > 0) /**/
+        if((a->dot_val != -1 || (a->dot_val == -1 && a->hash == 1)) || a->width == 0 && i > 0)
             ft_putnbr(i, a);
     }
 
