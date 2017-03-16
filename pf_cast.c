@@ -198,9 +198,14 @@ void f_o(t_pf *a, va_list ap)
             a->i += 1;
             //c_s -= 2;
         }
-        if (a->zero == 1)
+        if (a->zero == 1 && a->dot_val != -1)
             put_nchar('0', c_s, a);
-        if (!(a->dot == 1 && a->dot_val == 0))
+        else if (a->zero == 1 && a->dot_val == -1)
+            put_nchar(' ', c_s, a);
+        //if (a->zero == 1)
+          //  put_nchar('0', c_s, a);
+        //if (!(a->dot == 1 && a->dot_val == 0))
+        if((a->dot_val != -1 || (a->dot_val == -1 && a->hash == 1)) || a->width == 0 && i > 0)
             ft_putstr(ft_itoa_base(i, 8), a);
     }
     else
@@ -215,7 +220,8 @@ void f_o(t_pf *a, va_list ap)
         }
         //if (a->zero == 1)
         //   put_nchar('0', c_s, a);
-        if (!(a->dot == 1 && a->dot_val == 0))
+        //if (!(a->dot == 1 && a->dot_val == 0))
+        if((a->dot_val != -1 || (a->dot_val == -1 && a->hash == 1)) || a->width == 0 && i > 0)
             ft_putstr(ft_itoa_base(i, 8), a);
         //if (a->zero == 0)
         put_nchar(' ', c_s, a);
@@ -319,18 +325,22 @@ void f_x(t_pf *a, va_list ap)//
         if (a->hash && i > 0)
             c_s -=2;
         //if (a->zero == 0)
-           // put_nchar(' ', 1, a);
+           //put_nchar(' ', 1, a); // uncommented
+        if (a->zero == 0)
+            put_nchar(' ', c_s, a);//
         if (a->hash && i > 0)
         {
             write(1, "0x", 2);
             a->i += 2;
             //c_s -= 2;
         }
-        if (i == 0)
+        if (i == 0 && a->dot_val != -1 )
             put_nchar('0', 1, a);
-        if (a->zero == 1)
+        if (a->zero == 1 && a->dot_val != -1)
             put_nchar('0', c_s, a);
-        if (!(a->dot == 1 && a->dot_val == 0) && i != 0)
+        else if (a->zero == 1 && a->dot_val == -1)
+            put_nchar(' ', c_s, a);
+        if (/*!(a->dot == 1 && a->dot_val == 0) */a->dot_val != -1 && i != 0)
             ft_putstr(ft_itoa_base4(i, 16), a);
     }
     else
@@ -343,11 +353,11 @@ void f_x(t_pf *a, va_list ap)//
             a->i += 2;
             c_s -= 2;
         }
-        if (i == 0)
+        if (i == 0 && a->dot_val != -1)
             put_nchar('0', 1, a);
         //if (a->zero == 1)
-         //   put_nchar('0', c_s, a);
-        if (!(a->dot == 1 && a->dot_val == 0) && i != 0)
+            //put_nchar(' ', c_s, a); // uncommented
+        if (/*!(a->dot == 1 && a->dot_val == 0)*/ a->dot_val != -1 && i != 0)
             ft_putstr(ft_itoa_base4(i, 16), a);
         //if (a->zero == 0)
             put_nchar(' ', c_s, a);
@@ -583,6 +593,7 @@ void f_d(t_pf *a, va_list ap
             put_nchar('-', 1, a);
         put_nchar('0', c_z, a);
         //if ((a->dot == 1 && a->dot_val != 0 && a->dot_val != -1) || a->dot == 0)
+        if((a->dot_val != -1 || (a->dot_val == -1 && a->hash == 1)) || a->width == 0 && i > 0) /**/
             ft_putnbr(i, a);
         put_nchar(' ', c_s, a);
     }
@@ -606,6 +617,7 @@ void f_d(t_pf *a, va_list ap
             put_nchar('-', 1, a);
         put_nchar('0', c_z, a);
        // if ((a->dot == 1 && a->dot_val != 0 && a->dot_val != -1) || a->dot == 0) /* !!!! */
+        if((a->dot_val != -1 || (a->dot_val == -1 && a->hash == 1)) || a->width == 0 && i > 0) /**/
             ft_putnbr(i, a);
     }
     /*
