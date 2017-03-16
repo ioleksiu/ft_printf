@@ -575,9 +575,11 @@ void f_d(t_pf *a, va_list ap
     int n = count_num(i);
     int c_s = 0;
     int c_z = 0;
+    //int c_pr = 0;
 
     c_s = a->dot_val > n ? a->dot_val : n;
     c_s = a->width - c_s;
+    //c_pr = a->
     if(a->plus == 1 && a->minus == 0 && i > 0)
         c_s--;
     c_z = a->dot_val - n;
