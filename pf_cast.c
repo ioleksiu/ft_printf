@@ -533,7 +533,7 @@ int count_num(int a)
     if (a < 0)
     {
         a *= -1;
-        i++;
+     //   i++;
     }
     while (a > 0)
     {
@@ -578,15 +578,24 @@ void f_d(t_pf *a, va_list ap
     int c_s = 0;
     int c_pr = 0;
 
-    if (i > 0)
-        c_pr = a->dot_val > n ? (a->dot_val - n) : 0;
-    else
-        c_pr = a->dot_val > n - 1 ? (a->dot_val + 1 - n) : 0;
-    if (a->width > n + c_pr)
-        c_s = a->width - n - c_pr;
-    if(a->plus == 1 && a->minus == 0 && i > 0)
+//    if (i > 0)
+//        c_pr = a->dot_val > n ? (a->dot_val - n) : 0;
+//    else
+//        c_pr = a->dot_val > n - 1 ? (a->dot_val + 1 - n) : 0;
+    c_pr = a->dot_val;
+    c_s = a->width;
+    if (c_s <= c_pr)
+        c_s = 0;
+    if ((a->plus == 1 || i < 0) && c_pr > n + 1)
         c_s--;
-    if (a->minus == 1)/* left align */
+    if (c_pr > 0 && c_pr < a->width)
+        c_s = c_s - c_pr;
+    if ((a->minus == 1 && c_pr == n + 1 && (a->plus == 1 || i < 0)) ||
+            (a->minus == 1 && (a->plus == 1 || i < 0) && c_pr < 0))
+        c_s++;
+    if(a->plus == 1 || i < 0)
+        c_s--;
+    if (a->minus == 1)// left align
     {
         if (a->plus == 1 && i >= 0)
         {
@@ -595,18 +604,26 @@ void f_d(t_pf *a, va_list ap
         }
         if (i < 0)
             put_nchar('-', 1, a);
-        put_nchar('0', c_pr, a);
+        put_nchar('0', c_pr - n, a);
         if((a->dot_val != -1 || (a->dot_val == -1 && a->hash == 1)) || a->width == 0 && i > 0) /**/
             ft_putnbr(i, a);
-        put_nchar(' ', c_s, a);
+        if (c_pr != 0)
+            put_nchar(' ', c_s, a);
+        else
+            put_nchar(' ', c_s - n, a);
     }
-    else/* right align */
+    else// right align
     {
         if (a->space == 1 && c_s <= 0 && i > 0 && a->plus == 0) // i > 0 xz
             put_nchar(' ', 1, a);
-        if (a->zero == 0 || a->hash == 1 || a->width > a->dot_val)
+        if (a->dot_val > n)
+            a->zero = 0;
+        if (a->zero == 0 || a->hash == 1 || (a->width > a->dot_val) && a->dot_val > 0 || c_pr  != 0)
         {
-            put_nchar(' ', c_s, a);
+            if (c_pr != 0)
+                put_nchar(' ', c_s, a);
+            else
+                put_nchar(' ', c_s - n, a);
             c_s = 0;
         }
         if (i < 0 && a->zero == 1)
@@ -616,8 +633,8 @@ void f_d(t_pf *a, va_list ap
         if (i < 0 && i < 0 && a->zero == 0)
             put_nchar('-', 1, a);
         if (a->zero == 1 /*&& a->zero != 1*/)
-            put_nchar('0',c_s,a);
-        put_nchar('0', c_pr, a);
+            put_nchar('0',c_s - n,a);
+        put_nchar('0', c_pr - n, a);
         if((a->dot_val != -1 || (a->dot_val == -1 && a->hash == 1)) || a->width == 0 && i > 0)
             ft_putnbr(i, a);
     }
