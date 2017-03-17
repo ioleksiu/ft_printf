@@ -659,6 +659,8 @@ void f_d(t_pf *a, va_list ap)
         put_nchar('0', c_pr - n, a);
         if((a->dot_val != -1 || (a->dot_val == -1 && a->hash == 1)) || a->width == 0 && i > 0)
             ft_putnbr(i, a);
+        else if (a->width > 0)//added
+            put_nchar(' ', n, a);//added
     }
 
 }
