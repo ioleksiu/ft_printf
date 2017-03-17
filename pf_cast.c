@@ -636,6 +636,8 @@ void f_d(t_pf *a, va_list ap)
     {
         if(a->plus == 1 || i < 0)
             c_s--;
+        if ( i < 0 && a->width <= n + 1 + c_pr)
+            c_s = 0;
         if (a->space == 1 && c_s <= 0 && i > 0 && a->plus == 0) // i > 0 xz
             put_nchar(' ', 1, a);
         if (a->dot_val > n)
