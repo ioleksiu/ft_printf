@@ -228,8 +228,10 @@ void f_o(t_pf *a, va_list ap)
         else if (a->zero == 1 && a->dot_val == -1)
             put_nchar(' ', c_s, a);
         put_nchar('0', c_pr, a);
-        //if((a->dot_val != -1 || (a->dot_val == -1 && a->hash == 1)) || a->width == 0 && i > 0)
+        if((a->dot_val != -1 || (a->dot_val == -1 && a->hash == 1)) || a->width == 0 && i > 0)
             ft_putstr(s, a);
+        else if (a->width > 0)//added
+            put_nchar(' ', len, a);//added
     }
     else
     {
@@ -238,9 +240,11 @@ void f_o(t_pf *a, va_list ap)
             write(1, "0", 1);
             a->i += 1;
             c_pr -= 2;
+            if (c_pr == -2)
+                c_s--;
         }
         put_nchar('0', c_pr, a);
-        if((a->dot_val != -1 || (a->dot_val == -1 && a->hash == 1)) || a->width == 0 && i > 0)
+        if(((a->dot_val != -1 && i > 0)|| (a->dot_val == -1 && a->hash == 1)) || a->width == 0 && i > 0)
             ft_putstr(s, a);
         put_nchar(' ', c_s, a);
     }
