@@ -27,9 +27,12 @@ char	*ft_print_text(t_pf *a, char *s)
 		}
 		if (*s == '%' && *(s + 1) != '%')
 			return (s+=1);
-		write(1, s , 1);
-        a->i++;
-		s++;
+        if (*s != '%')
+        {
+            write(1, s, 1);
+            a->i++;
+            s++;
+        }
 	}
 
 	if (*s)
