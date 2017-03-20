@@ -17,6 +17,7 @@ void f_d(t_pf *a, va_list ap);
 uintmax_t cast_du(t_pf *a, va_list ap);
 void		f(uintmax_t value, uintmax_t base, char *str, int *i);
 uintmax_t cast_d_u(t_pf *a, va_list ap);
+int count_unum(uintmax_t a);
 
 
 void	ft_putstr(char const *s, t_pf *a)
@@ -37,7 +38,7 @@ void		f(uintmax_t value, uintmax_t base, char *str, int *i)
     tmp = "0123456789abcdef";
     if (value >= base)
         f(value / base, base, str, i);
-    str[(*i)++] = tmp[(value % base) < 0 ? -(value % base) : (value % base)];
+    str[(*i)++] = tmp[(value % base)];
 }
 
 char		*ft_itoa_base(uintmax_t value, uintmax_t base)
@@ -49,8 +50,8 @@ char		*ft_itoa_base(uintmax_t value, uintmax_t base)
     i = 0;
     if (base < 2 || base > 16 || !(str = (char*)malloc(32)))
         return (0);
-    if (base == 10 && value < 0)
-        str[i++] = '-';
+    //if (base == 10 && value < 0)
+       // str[i++] = '-';
     f(value, base, str, &i);
     str[i] = '\0';
     res = str;
@@ -65,7 +66,7 @@ void		f1(uintmax_t value, uintmax_t base, char *str, int *i)
     tmp = "0123456789ABCDEF";
     if (value >= base /*|| -value <= -base*/)
         f1(value / base, base, str, i);
-    str[(*i)++] = tmp[(value % base) < 0 ? -(value % base) : (value % base)];
+    str[(*i)++] = tmp[(value % base)];
 }
 
 char		*ft_itoa_base_1(uintmax_t value, uintmax_t base)
@@ -77,8 +78,8 @@ char		*ft_itoa_base_1(uintmax_t value, uintmax_t base)
     i = 0;
     if (base < 2 || base > 16 || !(str = (char*)malloc(32)))
         return (0);
-    if (base == 10 && value < 0)
-        str[i++] = '-';
+    //if (base == 10 && value < 0)
+        //str[i++] = '-';
     f1(value, base, str, &i);
     str[i] = '\0';
     res = str;
@@ -92,7 +93,7 @@ void		f4(uintmax_t value, uintmax_t base, char *str, int *i)
     tmp = "0123456789abcdef";
     if (value >= base || -value <= -base)
         f4(value / base, base, str, i);
-    str[(*i)++] = tmp[(value % base) < 0 ? -(value % base) : (value % base)];
+    str[(*i)++] = tmp[(value % base)];
 }
 
 char		*ft_itoa_base4(uintmax_t value, uintmax_t base)
@@ -104,8 +105,8 @@ char		*ft_itoa_base4(uintmax_t value, uintmax_t base)
     i = 0;
     if (base < 2 || base > 16 || !(str = (char*)malloc(32)))
         return (0);
-    if (base == 10 && value < 0)
-        str[i++] = '-';
+    //if (base == 10 && value < 0)
+       // str[i++] = '-';
     f4(value, base, str, &i);
     str[i] = '\0';
     res = str;
@@ -224,7 +225,7 @@ void f_D(t_pf *a, va_list ap)
         if (i < 0)
             put_nchar('-', 1, a);
         put_nchar('0', c_pr - n, a);
-        if((a->dot_val != -1 || (a->dot_val == -1 && a->hash == 1)) || a->width == 0 && i > 0) /**/
+        if((a->dot_val != -1 || (a->dot_val == -1 && a->hash == 1)) || (a->width == 0 && i > 0)) /**/
             ft_putnbr(i, a);
         if (c_pr > 0 && a->minus == 0)
             put_nchar(' ', c_s, a);
@@ -241,7 +242,7 @@ void f_D(t_pf *a, va_list ap)
             put_nchar(' ', 1, a);
         if (a->dot_val > n)
             a->zero = 0;
-        if (a->zero == 0 || a->hash == 1 || (a->width > a->dot_val) && a->dot_val > 0 || c_pr != 0)
+        if (a->zero == 0 || a->hash == 1 || ((a->width > a->dot_val) && a->dot_val > 0) || c_pr != 0)
         {
             if (c_pr != 0 && c_pr != -1 && i != 0 && (a->plus == 1 || i < 0) && c_s <= c_pr + 1)
                 put_nchar(' ', c_s, a);
@@ -258,7 +259,7 @@ void f_D(t_pf *a, va_list ap)
         if (a->zero == 1 && a->minus != 1/*&& a->zero != 1*/)
             put_nchar('0',c_s - n,a);
         put_nchar('0', c_pr - n, a);
-        if((a->dot_val != -1 || (a->dot_val == -1 && a->hash == 1)) || a->width == 0 && i > 0)
+        if((a->dot_val != -1 || (a->dot_val == -1 && a->hash == 1)) || (a->width == 0 && i > 0))
             ft_putnbr(i, a);
         else if (a->width > 0)//added
             put_nchar(' ', n, a);//added
@@ -301,7 +302,7 @@ void f_o(t_pf *a, va_list ap)
         else if (a->zero == 1 && a->dot_val == -1)
             put_nchar(' ', c_s, a);
         put_nchar('0', c_pr, a);
-        if((a->dot_val != -1 || (a->dot_val == -1 && a->hash == 1)) || a->width == 0 && i > 0)
+        if((a->dot_val != -1 || (a->dot_val == -1 && a->hash == 1)) || (a->width == 0 && i > 0))
             ft_putstr(s, a);
         else if (a->width > 0)//added
             put_nchar(' ', len, a);//added
@@ -317,7 +318,7 @@ void f_o(t_pf *a, va_list ap)
                 c_s--;
         }
         put_nchar('0', c_pr, a);
-        if(((a->dot_val != -1 && i > 0)|| (a->dot_val == -1 && a->hash == 1)) || a->width == 0 && i > 0)
+        if(((a->dot_val != -1 && i > 0)|| (a->dot_val == -1 && a->hash == 1)) || (a->width == 0 && i > 0))
             ft_putstr(s, a);
         put_nchar(' ', c_s, a);
     }
@@ -355,7 +356,7 @@ void f_O(t_pf *a, va_list ap)
         else if (a->zero == 1 && a->dot_val == -1)
             put_nchar(' ', c_s, a);
         put_nchar('0', c_pr, a);
-        if((a->dot_val != -1 || (a->dot_val == -1 && a->hash == 1)) || a->width == 0 && i > 0)
+        if((a->dot_val != -1 || (a->dot_val == -1 && a->hash == 1)) || (a->width == 0 && i > 0))
             ft_putstr(s, a);
         else if (a->width > 0)//added
             put_nchar(' ', len, a);//added
@@ -371,7 +372,7 @@ void f_O(t_pf *a, va_list ap)
                 c_s--;
         }
         put_nchar('0', c_pr, a);
-        if(((a->dot_val != -1 && i > 0)|| (a->dot_val == -1 && a->hash == 1)) || a->width == 0 && i > 0)
+        if(((a->dot_val != -1 && i > 0)|| (a->dot_val == -1 && a->hash == 1)) || (a->width == 0 && i > 0))
             ft_putstr(s, a);
         put_nchar(' ', c_s, a);
     }
@@ -402,7 +403,7 @@ void f_u(t_pf *a, va_list ap)
     }
     else
     {
-        if (i < 0 || a->plus == 1)
+        if (a->plus == 1)
             c_s--;
         //if (a->plus == 1 && i > 0)
             //put_nchar('+', 1, a);
@@ -526,7 +527,7 @@ void f_X(t_pf *a, va_list ap)//ЫЩ
     int c_z = 0;
     int n ;
 
-    intmax_t i = cast_du(a,ap);//
+    intmax_t i = cast_d_u(a,ap);//
     n = count_num(i);
     c_s = a->dot_val > n ? a->dot_val : n;
     c_s = a->width - c_s;
@@ -830,7 +831,7 @@ void f_d(t_pf *a, va_list ap)
         if (i < 0)
             put_nchar('-', 1, a);
         put_nchar('0', c_pr - n, a);
-        if((a->dot_val != -1 || (a->dot_val == -1 && a->hash == 1)) || a->width == 0 && i > 0) /**/
+        if((a->dot_val != -1 || (a->dot_val == -1 && a->hash == 1)) || (a->width == 0 && i > 0)) /**/
             ft_putnbr(i, a);
         if (c_pr > 0 && a->minus == 0)
             put_nchar(' ', c_s, a);
@@ -857,7 +858,7 @@ void f_d(t_pf *a, va_list ap)
              */
         if (a->dot_val > n)
             a->zero = 0;
-        if (a->zero == 0 || a->hash == 1 || (a->width > a->dot_val) && a->dot_val > 0 || c_pr != 0)
+        if (a->zero == 0 || a->hash == 1 ||((a->width > a->dot_val) && a->dot_val > 0) || c_pr != 0)
         {
             if (c_pr != 0 && c_pr != -1 && i != 0 && (a->plus == 1 || i < 0) && c_s <= c_pr + 1)
                 put_nchar(' ', c_s, a);
@@ -874,7 +875,7 @@ void f_d(t_pf *a, va_list ap)
         if (a->zero == 1 && a->minus != 1/*&& a->zero != 1*/)
             put_nchar('0',c_s - n,a);
         put_nchar('0', c_pr - n, a);
-        if((a->dot_val != -1 || (a->dot_val == -1 && a->hash == 1)) || a->width == 0 && i > 0)
+        if((a->dot_val != -1 || (a->dot_val == -1 && a->hash == 1)) || (a->width == 0 && i > 0))
             ft_putnbr(i, a);
         else if (a->width > 0)//added
             put_nchar(' ', n, a);//added
