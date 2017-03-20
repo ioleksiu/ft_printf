@@ -20,6 +20,25 @@ uintmax_t cast_d_u(t_pf *a, va_list ap);
 int count_unum(uintmax_t a);
 int count_num(int a);
 
+uintmax_t cast_X(t_pf *a, va_list ap)
+{
+    //void * i;
+
+    //i = va_arg(ap, void *);
+    if(a->size == 3)
+        return  va_arg(ap,unsigned long);
+    if(a->size == 2)
+        return   (unsigned short)va_arg(ap,unsigned int);
+    if(a->size == 1)
+        return  (unsigned char)va_arg(ap,unsigned int);
+    if(a->size == 4)
+        return  va_arg(ap,unsigned long long) ;
+    if(a->size == 6)/* 5*/
+        return  va_arg(ap,uintmax_t);
+    if(a->size == 5)/*6*/
+        return va_arg(ap,size_t);// changed
+    return  va_arg(ap, unsigned int);
+}
 
 void	ft_putstr(char const *s, t_pf *a)
 {
@@ -461,7 +480,7 @@ void f_x(t_pf *a, va_list ap)//
     int c_z = 0;
     int n ;
 
-    intmax_t i = cast_du_x(a,ap);//
+    intmax_t i = cast_X(a,ap);//
     n = count_num(i);
     c_s = a->dot_val > n ? a->dot_val : n;
     c_s = a->width - c_s;
@@ -518,7 +537,7 @@ void f_X(t_pf *a, va_list ap)//ЫЩ
     int c_z = 0;
     int n ;
 
-    intmax_t i = cast_d(a,ap);//
+    intmax_t i = cast_X(a,ap);//
     n = count_num(i);
     c_s = a->dot_val > n ? a->dot_val : n;
     c_s = a->width - c_s;
