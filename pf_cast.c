@@ -56,7 +56,7 @@ char		*ft_itoa_base(uintmax_t value, uintmax_t base)
     f(value, base, str, &i);
     str[i] = '\0';
     res = str;
-    free(str);
+    //free(str);
     return (res);
 }
 //for X
@@ -84,7 +84,7 @@ char		*ft_itoa_base_1(uintmax_t value, uintmax_t base)
     f1(value, base, str, &i);
     str[i] = '\0';
     res = str;
-    free(str);
+    //free(str);
     return (res);
 }
 void		f4(uintmax_t value, uintmax_t base, char *str, int *i)
@@ -111,7 +111,7 @@ char		*ft_itoa_base4(uintmax_t value, uintmax_t base)
     f4(value, base, str, &i);
     str[i] = '\0';
     res = str;
-    free(str);
+    //free(str);
     return (res);
 }
 ////
