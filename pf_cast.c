@@ -18,6 +18,7 @@ uintmax_t cast_du(t_pf *a, va_list ap);
 void		f(uintmax_t value, uintmax_t base, char *str, int *i);
 uintmax_t cast_d_u(t_pf *a, va_list ap);
 int count_unum(uintmax_t a);
+int count_num(int a);
 
 
 void	ft_putstr(char const *s, t_pf *a)
@@ -513,21 +514,11 @@ void f_x(t_pf *a, va_list ap)//
 
 void f_X(t_pf *a, va_list ap)//ЫЩ
 {
-    /*
-    intmax_t i = cast_du(a,ap); /*change to d_u some cases will pass */ /* aborted*/
-    /*
-    if (a->hash)
-    {
-        write(1, "0X", 2);
-        a->i+=2;
-    }
-    ft_putstr(ft_itoa_base_1(i,16),a);
-    */
     int c_s = 0;
     int c_z = 0;
     int n ;
 
-    intmax_t i = cast_d_u(a,ap);//
+    intmax_t i = cast_d(a,ap);//
     n = count_num(i);
     c_s = a->dot_val > n ? a->dot_val : n;
     c_s = a->width - c_s;
