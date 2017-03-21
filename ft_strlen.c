@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "string.h"
 #include <string.h>
 
 size_t	ft_strlen(const char *s)
@@ -17,7 +18,7 @@ size_t	ft_strlen(const char *s)
 	int i;
 
 	i = 0;
-    if(s!= NULL && *s)
+    if(s != NULL && *s)
 	    while (*s++ != '\0')
 		    i++;
 	return (i);

@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ioleksiu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/15 16:09:41 by ioleksiu          #+#    #+#             */
-/*   Updated: 2016/12/15 16:53:13 by ioleksiu         ###   ########.fr       */
+/*   Created: 2017/03/21 17:04:11 by ioleksiu          #+#    #+#             */
+/*   Updated: 2017/03/21 17:04:46 by ioleksiu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_strchr(const char *s, int c)
+char *parse(char *s, t_pf *a)
 {
-	char *str;
-
-	str = (char *)s;
-	if ((char)c == '\0')
-	{
-		while (*str != '\0')
-			str++;
-		return (str);
-	}
-	while (*str)
-	{
-		if (*str == (char)c)
-			return (str);
-		str++;
-	}
-	return (NULL);
+    s = ft_flags(a, s);
+    s = ft_width(a, s);
+    s = ft_dot(a, s);
+    s = ft_size(a, s);
+    if (ft_strchr("sSpdDioOuUxXcC", *s) && *s)
+    {
+        a->conversion = *s;
+        s++;
+    }
+    return (s);
 }

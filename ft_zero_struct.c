@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_zero_struct.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ioleksiu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/15 16:09:41 by ioleksiu          #+#    #+#             */
-/*   Updated: 2016/12/15 16:53:13 by ioleksiu         ###   ########.fr       */
+/*   Created: 2017/03/21 17:05:06 by ioleksiu          #+#    #+#             */
+/*   Updated: 2017/03/21 17:05:45 by ioleksiu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_strchr(const char *s, int c)
+t_pf	*ft_zero_struct(t_pf *a)
 {
-	char *str;
-
-	str = (char *)s;
-	if ((char)c == '\0')
-	{
-		while (*str != '\0')
-			str++;
-		return (str);
-	}
-	while (*str)
-	{
-		if (*str == (char)c)
-			return (str);
-		str++;
-	}
-	return (NULL);
+    a->minus = 0;
+    a->zero = 0;
+    a->plus = 0;
+    a->space = 0;
+    a->hash = 0;
+    a->dot = 0;
+    a->dot_val = 0;
+    a->width = 0;
+    a->size = 0;
+    a->conversion = '0';
+    return (a);
 }

@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   f_proc.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ioleksiu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/15 16:09:41 by ioleksiu          #+#    #+#             */
-/*   Updated: 2016/12/15 16:53:13 by ioleksiu         ###   ########.fr       */
+/*   Created: 2017/03/21 16:25:09 by ioleksiu          #+#    #+#             */
+/*   Updated: 2017/03/21 16:25:32 by ioleksiu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_strchr(const char *s, int c)
+void f_proc(char c, t_pf *a)
 {
-	char *str;
+    int l;
+    char sp;
 
-	str = (char *)s;
-	if ((char)c == '\0')
-	{
-		while (*str != '\0')
-			str++;
-		return (str);
-	}
-	while (*str)
-	{
-		if (*str == (char)c)
-			return (str);
-		str++;
-	}
-	return (NULL);
+    l = a->width;
+    sp = (char) ((a->zero == 1 && a->minus != 1) ? '0' : ' ');
+    if (a->minus == 0)
+        while (l-- > 1)
+            write(1, &sp, 1);
+    write(1, &c, 1);
+    if (a->minus != 0)
+        while (l-- > 1)
+            write(1, &sp, 1);
+    a->width > 0 ?  (a->i = a->i + a->width) : (a->i = a->i + 1) ;
 }

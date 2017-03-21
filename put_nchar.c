@@ -1,33 +1,23 @@
-/* ************************************************************************** */
+	/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   put_nchar.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ioleksiu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/15 16:09:41 by ioleksiu          #+#    #+#             */
-/*   Updated: 2016/12/15 16:53:13 by ioleksiu         ###   ########.fr       */
+/*   Created: 2017/03/21 16:12:28 by ioleksiu          #+#    #+#             */
+/*   Updated: 2017/03/21 16:13:08 by ioleksiu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_strchr(const char *s, int c)
+void put_nchar(char c, int i, t_pf *a)
 {
-	char *str;
-
-	str = (char *)s;
-	if ((char)c == '\0')
-	{
-		while (*str != '\0')
-			str++;
-		return (str);
-	}
-	while (*str)
-	{
-		if (*str == (char)c)
-			return (str);
-		str++;
-	}
-	return (NULL);
+    while (i > 0)
+    {
+        write(1, &c, 1);
+        i--;
+        a->i++;
+    }
 }

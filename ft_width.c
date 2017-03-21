@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_width.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ioleksiu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/15 16:09:41 by ioleksiu          #+#    #+#             */
-/*   Updated: 2016/12/15 16:53:13 by ioleksiu         ###   ########.fr       */
+/*   Created: 2017/03/21 17:07:33 by ioleksiu          #+#    #+#             */
+/*   Updated: 2017/03/21 17:08:09 by ioleksiu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_width(t_pf *a, char *s)
 {
-	char *str;
-
-	str = (char *)s;
-	if ((char)c == '\0')
+	if (*s > '0' && *s <= '9' && *(s - 1) != '.')
 	{
-		while (*str != '\0')
-			str++;
-		return (str);
+		a->width = *s - '0';
+		s++;
+		while (*s <= '9' && *s >= '0')
+		{
+			a->width = a->width * 10 + *s - '0';
+			s++;
+		}
 	}
-	while (*str)
-	{
-		if (*str == (char)c)
-			return (str);
-		str++;
-	}
-	return (NULL);
+	return (s);
 }

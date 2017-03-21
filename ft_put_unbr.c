@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_put_unbr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ioleksiu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/15 16:09:41 by ioleksiu          #+#    #+#             */
-/*   Updated: 2016/12/15 16:53:13 by ioleksiu         ###   ########.fr       */
+/*   Created: 2017/03/21 16:50:44 by ioleksiu          #+#    #+#             */
+/*   Updated: 2017/03/21 16:51:27 by ioleksiu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_strchr(const char *s, int c)
+void	ft_put_unbr(uintmax_t n, t_pf *a)
 {
-	char *str;
+    char p;
+    uintmax_t z;
 
-	str = (char *)s;
-	if ((char)c == '\0')
-	{
-		while (*str != '\0')
-			str++;
-		return (str);
-	}
-	while (*str)
-	{
-		if (*str == (char)c)
-			return (str);
-		str++;
-	}
-	return (NULL);
+    z = n;
+    if (z >= 10)
+    {
+        ft_putnbr(z / 10, a);
+        ft_putnbr(z % 10, a);
+    }
+    else
+    {
+        p = z + 48;
+        write(1, &p, 1);
+        a->i++;
+    }
 }

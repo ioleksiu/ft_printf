@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   cast_d_u.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ioleksiu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/15 16:09:41 by ioleksiu          #+#    #+#             */
-/*   Updated: 2016/12/15 16:53:13 by ioleksiu         ###   ########.fr       */
+/*   Created: 2017/03/21 16:14:59 by ioleksiu          #+#    #+#             */
+/*   Updated: 2017/03/21 16:15:32 by ioleksiu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_strchr(const char *s, int c)
+uintmax_t cast_d_u(t_pf *a, va_list ap)
 {
-	char *str;
+    void *i;
 
-	str = (char *)s;
-	if ((char)c == '\0')
-	{
-		while (*str != '\0')
-			str++;
-		return (str);
-	}
-	while (*str)
-	{
-		if (*str == (char)c)
-			return (str);
-		str++;
-	}
-	return (NULL);
+    i = va_arg(ap, void *);
+    if(a->size == 3)
+        return  (unsigned long) i;
+    if(a->size == 2)
+        return  (unsigned short) i;
+    if(a->size == 1)
+        return  (unsigned char) i;
+    if(a->size == 4)
+        return  (unsigned long long) i;
+    if(a->size == 6)
+        return  (uintmax_t) i;
+    return (unsigned long) i;
 }
