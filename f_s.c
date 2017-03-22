@@ -28,12 +28,12 @@ void f_s(t_pf *a, va_list ap)
     else
         c_prec = i;
     c_s = a->width - c_prec;
-    if (a->minus == 1)/* left align */
+    if (a->minus == 1)
     {
         ft_put_strn(s,c_prec,a);
-		/* a->zero == 0 ? */put_nchar(' ',c_s, a) /*: put_nchar('0',c_s, a)*/;
+		put_nchar(' ',c_s, a);
     }
-    if (a->minus == 0)/* right align */
+    if (a->minus == 0)
     {
         a->zero == 0 ? put_nchar(' ', c_s, a) : put_nchar('0', c_s, a);
         ft_put_strn(s, c_prec, a);

@@ -14,10 +14,10 @@
 
 char	*ft_dot(t_pf *a, char *s)
 {
-    if (*s == '.' && (!(ft_isdigit(*(s + 1))) || *(s + 1) == '0')) /* || added */
+    if (*s == '.' && (!(ft_isdigit(*(s + 1))) || *(s + 1) == '0'))
     {
         a->dot = 1;
-        a->dot_val = -1;/* changed 0 to -1 */
+        a->dot_val = -1;
         return(s+1);
     }
 
@@ -26,26 +26,18 @@ char	*ft_dot(t_pf *a, char *s)
 		a->dot = 1;
 		a->dot_val = *(s + 1) - '0';
 		s++;
-		while(*(s + 1) <= '9' && *(s + 1) >= '0') /* >= 0*/
+		while(*(s + 1) <= '9' && *(s + 1) >= '0')
 		{
 			a->dot_val = a->dot_val * 10 + *(s + 1) - '0';
 			s++;
 		}
-		if (*s >'0' && *s <= '9')/* >= 0 */
+		if (*s >'0' && *s <= '9')
 		{
 			s++;
 			return (s);
 		}
 		return(s+1);
 	}
-
-    //if (*s == '.' && (!(ft_isdigit(*(s + 1))) || *(s + 1) == 0)) /* || added */
-    //{
-	//   a->dot = 1;
-	// a->dot_val = -1;/* changed 0 to -1 */
-	//return(s+1);
-    //}
-    //*/
     else
 		return(s);
 }

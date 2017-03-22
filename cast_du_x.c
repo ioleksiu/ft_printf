@@ -14,9 +14,6 @@
 
 uintmax_t cast_du_x(t_pf *a, va_list ap)
 {
-    //void * i;
-
-    //i = va_arg(ap, void *);
     if(a->size == 3)
         return  va_arg(ap,unsigned long);
     if(a->size == 2)
@@ -25,9 +22,9 @@ uintmax_t cast_du_x(t_pf *a, va_list ap)
         return  (unsigned char)va_arg(ap,unsigned int);
     if(a->size == 4)
         return  va_arg(ap,unsigned long long) ;
-    if(a->size == 6)/* 5*/
+    if(a->size == 6)
         return  va_arg(ap,uintmax_t);
-    if(a->size == 5)/*6*/
-        return va_arg(ap,size_t);// changed
+    if(a->size == 5)
+        return va_arg(ap,size_t);
     return  va_arg(ap, unsigned int);
 }

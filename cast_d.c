@@ -18,16 +18,17 @@ intmax_t cast_d(t_pf *a, va_list ap)
     if(a->size == 3)
         return  va_arg(ap, long);
     if(a->size == 2)
-        return  (short)(va_arg(ap, int));/*tennessee edition*/
+        return  (short)(va_arg(ap, int));
     if(a->size == 1)
-        return  (char)(va_arg(ap, int)); /*tennessee edition*/
+        return  (char)(va_arg(ap, int));
     if(a->size == 4)
         return  va_arg(ap, long long);
-    if(a->size == 5) {/*6*/
+    if(a->size == 5)
+    {
         j = va_arg(ap, size_t);
         return (j);
     }
-    if(a->size == 6)/*5*/
+    if(a->size == 6)
         return  va_arg(ap, intmax_t);
     return va_arg(ap, int);
 }

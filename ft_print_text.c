@@ -40,21 +40,3 @@ char	*ft_print_text(t_pf *a, char *s)
     return (s);
 
 }
-/* "%%%-+0d" fix it*/
-/*
-sunday > ./a.out "Hello%%%0+232#43-234-.3434#d "
-Hello%
-minus 0
-zero 1
-plus 0
-space 0
-hash 0
-dot 1
-dot_val 3434
-width 234
-size : none
-size 0
-conversion d
-~/sunday >
-
-*/

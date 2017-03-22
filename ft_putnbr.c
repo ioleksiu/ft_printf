@@ -11,9 +11,6 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <unistd.h>
-
-void	ft_putnbr(intmax_t n, t_pf *a);
 
 void	ft_putnbr(intmax_t n, t_pf *a)
 {
@@ -22,12 +19,7 @@ void	ft_putnbr(intmax_t n, t_pf *a)
 
 	z = n;
 	if (n < 0)
-	{
-		//write(1, "-", 1);
 		z = -z;
-		//a->i++;
-	}
-	//if (z >= 10)
     if(z>= 10 || z <= -10)
 	{
 		ft_putnbr(z / 10, a);

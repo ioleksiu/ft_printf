@@ -31,24 +31,6 @@ typedef struct 							s_pf
 	char								conversion;
     int                                 i;
 }										t_pf;
-/*
-char									*ft_flags(t_pf *a, char *s);
-char									*ft_width(t_pf *a, char *s);
-char									*ft_dot(t_pf *a, char *s);
-char									*ft_size(t_pf *a, char *s);
-t_pf									*struct_fill(va_list ap, char *s, t_pf *a);
-t_pf									*ft_struct(void);
-void									ft_print_struct(t_pf *a);
-int										ft_isdigit(int c);
-char									*ft_print_text(t_pf *a, char *s);
-int                                     ft_printf(char *format, ... );
-void                                    f_proc(char c, t_pf *a);
-void                                    pf_cast(t_pf *a, va_list ap);
-void	                                ft_putnbr(intmax_t n, t_pf *a);
-char									*ft_strchr(const char *s, int c);
-size_t									ft_strlen(const char *s);
-intmax_t                                cast_d(t_pf *a, va_list ap);
-*/
 
 uintmax_t								cast_d_u(t_pf *a, va_list ap);
 intmax_t								cast_d(t_pf *a, va_list ap);
@@ -65,7 +47,9 @@ void									f_O(t_pf *a, va_list ap);
 void									f_p(t_pf *a, va_list ap);
 void									f_proc(char c, t_pf *a);
 void									f_s(t_pf *a, va_list ap);
+void									f_S(t_pf *a, va_list ap);
 void									f_u(t_pf *a, va_list ap);
+void									f_U(t_pf *a, va_list ap);
 void									f_x(t_pf *a, va_list ap);
 void									f_X(t_pf *a, va_list ap);
 void									f_D(t_pf *a, va_list ap);

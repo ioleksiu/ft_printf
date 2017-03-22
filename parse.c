@@ -18,7 +18,7 @@ char *parse(char *s, t_pf *a)
     s = ft_width(a, s);
     s = ft_dot(a, s);
     s = ft_size(a, s);
-    if (ft_strchr("sSpdDioOuUxXcC", *s) && *s)
+    if (ft_strchr("pisoSdDOuUxXcC", *s) && *s)
     {
         a->conversion = *s;
         s++;
