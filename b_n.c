@@ -6,16 +6,16 @@
 /*   By: ioleksiu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/21 18:03:46 by ioleksiu          #+#    #+#             */
-/*   Updated: 2017/03/21 18:04:20 by ioleksiu         ###   ########.fr       */
+/*   Updated: 2017/03/23 15:37:11 by ioleksiu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void b_n(t_pf *a, va_list ap)
+void	b_n(t_pf *a, va_list ap)
 {
-    int *res;
+	int *res;
 
-    res = va_arg(ap,int*);
-    *res = a->i;
+	res = va_arg(ap, int*);
+	*res = a->i;
 }

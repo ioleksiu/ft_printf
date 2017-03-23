@@ -6,23 +6,23 @@
 /*   By: ioleksiu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/21 16:47:14 by ioleksiu          #+#    #+#             */
-/*   Updated: 2017/03/21 16:49:31 by ioleksiu         ###   ########.fr       */
+/*   Updated: 2017/03/23 15:56:20 by ioleksiu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int count_unum(uintmax_t a)
+int			count_unum(uintmax_t a)
 {
-    int i;
+	int		i;
 
-    i = 0;
-    if (a == 0)
-        return (1);
-    while (a > 0)
-    {
-        a /= 10;
-        i++;
-    }
-    return (i);
+	i = 0;
+	if (a == 0)
+		return (1);
+	while (a > 0)
+	{
+		a /= 10;
+		i++;
+	}
+	return (i);
 }
