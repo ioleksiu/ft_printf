@@ -17,25 +17,25 @@ CFLAGS = -O0
 OBJECTS = $(SRC:.c=.o)
 
 SRC = cast_d.c \
-		f_O.c \
+		f_oo.c \
 		f_p.c \
 		ft_isdigit.c \
 		ft_put_unbr.c \
 		ft_width.c \
 		cast_d_u.c	\
-		f_S.c \
+		f_ss.c \
 		f_proc.c \
 		ft_itoa_base.c \
 		ft_putnbr.c \
 		ft_zero_struct.c \
 		cast_du.c \
-		f_U.c \
+		f_uu.c \
 		f_s.c \
 		ft_itoa_base1.c \
 		ft_putstr.c \
 		parse.c \
 		cast_du_x.c \
-		f_X.c \
+		f_xx.c \
 		f_u.c \
 		ft_itoa_base4.c \
 		ft_size.c \
@@ -50,7 +50,7 @@ SRC = cast_d.c \
 		ft_dot.c \
 		ft_printf.c	\
 		ft_strlen.c \
-		f_D.c \
+		f_dd.c \
 		f_o.c \
 		ft_flags.c \
 		ft_put_strn.c \

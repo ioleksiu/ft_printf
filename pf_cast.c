@@ -15,17 +15,17 @@
 void	pf_cast(t_pf *a, va_list ap)
 {
 	if (a->conversion == 's' || a->conversion == 'S')
-		a->conversion == 's' ? f_s(a, ap) : f_S(a, ap);
+		a->conversion == 's' ? f_s(a, ap) : f_ss(a, ap);
 	if (a->conversion == 'p' || a->conversion == 'd')
 		a->conversion == 'p' ? f_p(a, ap) : f_d(a, ap);
 	if (a->conversion == 'D' || a->conversion == 'i')
-		a->conversion == 'D' ? f_D(a, ap) : f_i(a, ap);
+		a->conversion == 'D' ? f_dd(a, ap) : f_i(a, ap);
 	if (a->conversion == 'o' || a->conversion == 'O')
-		a->conversion == 'o' ? f_o(a, ap) : f_O(a, ap);
+		a->conversion == 'o' ? f_o(a, ap) : f_oo(a, ap);
 	if (a->conversion == 'u' || a->conversion == 'U')
-		a->conversion == 'u' ? f_u(a, ap) : f_U(a, ap);
+		a->conversion == 'u' ? f_u(a, ap) : f_uu(a, ap);
 	if (a->conversion == 'x' || a->conversion == 'X')
-		a->conversion == 'x' ? f_x(a, ap) : f_X(a, ap);
+		a->conversion == 'x' ? f_x(a, ap) : f_xx(a, ap);
 	if (a->conversion == 'c' || a->conversion == 'C')
-		a->conversion == 'c' ? f_c(a, ap) : f_C(a, ap);
+		a->conversion == 'c' ? f_c(a, ap) : f_cc(a, ap);
 }
