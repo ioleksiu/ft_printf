@@ -14,6 +14,8 @@
 
 uintmax_t		cast_du(t_pf *a, va_list ap)
 {
+	if (a->size == 2 && a->conversion == 'o')
+		return ((unsigned short)va_arg(ap, unsigned int));
 	if (a->size == 4 || (a->conversion == 'O' && a->size != 1))
 		return (va_arg(ap, unsigned long long));
 	if (a->size == 2 || (a->conversion == 'O' && a->size != 1))

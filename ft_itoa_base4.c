@@ -22,17 +22,16 @@ void			f4(uintmax_t value, uintmax_t base, char *str, int *i)
 	str[(*i)++] = tmp[(value % base)];
 }
 
-char			*ft_itoa_base4(uintmax_t value, uintmax_t base)
+char			*ft_itoa_base4(uintmax_t value, uintmax_t base, t_pf *a)
 {
 	int			i;
 	char		*str;
-	char		*res;
 
 	i = 0;
 	if (base < 2 || base > 16 || !(str = (char*)malloc(32)))
 		return (0);
 	f4(value, base, str, &i);
 	str[i] = '\0';
-	res = str;
-	return (res);
+	a->str = str;
+	return (str);
 }

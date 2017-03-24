@@ -32,6 +32,7 @@ typedef struct			s_pf
 	int					size;
 	char				conversion;
 	int					i;
+	char				*str;
 }						t_pf;
 
 uintmax_t				cast_d_u(t_pf *a, va_list ap);
@@ -58,9 +59,12 @@ void					f_dd(t_pf *a, va_list ap);
 char					*ft_dot(t_pf *a, char *s);
 char					*ft_flags(t_pf *a, char *s);
 int						ft_isdigit(int c);
-char					*ft_itoa_base(uintmax_t value, uintmax_t base);
-char					*ft_itoa_base_1(uintmax_t value, uintmax_t base);
-char					*ft_itoa_base4(uintmax_t value, uintmax_t base);
+char					*ft_itoa_base(uintmax_t value,
+						uintmax_t base, t_pf *a);
+char					*ft_itoa_base_1(uintmax_t value,
+						uintmax_t base, t_pf *a);
+char					*ft_itoa_base4(uintmax_t value,
+						uintmax_t base, t_pf *a);
 char					*ft_print_text(t_pf *a, char *s);
 int						ft_printf(char *format, ...);
 void					ft_put_strn(char *s, int i, t_pf *a);
@@ -78,5 +82,7 @@ void					pf_cast(t_pf *a, va_list ap);
 void					put_nchar(char c, int i, t_pf *a);
 t_pf					*struct_fill(va_list ap, char *s, t_pf *a);
 void					b_n(t_pf *a, va_list ap);
+char					*ft_strdup(const char *s1);
+int						pr_f(t_pf *a, int c_pr, int c_s, intmax_t i);
 
 #endif

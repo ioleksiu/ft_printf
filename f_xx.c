@@ -6,7 +6,7 @@
 /*   By: ioleksiu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/21 16:25:52 by ioleksiu          #+#    #+#             */
-/*   Updated: 2017/03/23 16:42:43 by ioleksiu         ###   ########.fr       */
+/*   Updated: 2017/03/24 16:18:34 by ioleksiu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ void		f_xx_nmin(t_pf *a, int c_s, intmax_t i, int n)
 	else if (a->zero == 1 && a->dot_val == -1)
 		put_nchar(' ', c_s, a);
 	if (a->dot_val != -1 && i != 0)
-		ft_putstr(ft_itoa_base_1(i, 16), a);
+		ft_putstr(ft_itoa_base_1(i, 16, a), a);
 	else if (a->width > 0)
 		put_nchar(' ', n, a);
 }
 
-void		f_xx_min(t_pf *a, int c_s, intmax_t i, int n)
+void		f_xx_min(t_pf *a, int c_s, intmax_t i)
 {
 	if (a->hash)
 	{
@@ -46,7 +46,7 @@ void		f_xx_min(t_pf *a, int c_s, intmax_t i, int n)
 	if (i == 0 && a->dot_val != -1)
 		put_nchar('0', 1, a);
 	if (a->dot_val != -1 && i != 0)
-		ft_putstr(ft_itoa_base_1(i, 16), a);
+		ft_putstr(ft_itoa_base_1(i, 16, a), a);
 	put_nchar(' ', c_s, a);
 }
 
@@ -64,5 +64,5 @@ void		f_xx(t_pf *a, va_list ap)
 	c_s = a->dot_val > n ? a->dot_val : n;
 	c_s = a->width - c_s;
 	c_z = a->dot_val - n;
-	(a->minus == 0) ? f_xx_nmin(a, c_s, i, n) : f_xx_min(a, c_s, i, n);
+	(a->minus == 0) ? f_xx_nmin(a, c_s, i, n) : f_xx_min(a, c_s, i);
 }

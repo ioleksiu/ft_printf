@@ -6,7 +6,7 @@
 /*   By: ioleksiu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/21 16:10:18 by ioleksiu          #+#    #+#             */
-/*   Updated: 2017/03/23 16:52:24 by ioleksiu         ###   ########.fr       */
+/*   Updated: 2017/03/24 20:38:48 by ioleksiu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +101,11 @@ void			f_d(t_pf *a, va_list ap)
 	c_pr = 0;
 	c_pr = a->dot_val;
 	c_s = a->width;
+	if (pr_f(a, c_pr, c_s, i))
+		return ;
 	if (c_s <= c_pr)
 		c_s = 0;
-	if ((a->plus == 1 || i < 0) && c_pr > n + 1)
+	if ((a->plus == 1 || i < 0) && c_pr > n + 1 && a->width <= a->dot_val)
 		c_s--;
 	if (c_pr > 0 && c_pr > n && c_s > c_pr)
 		c_s -= c_pr - n;

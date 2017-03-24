@@ -41,7 +41,7 @@ void				f_p(t_pf *a, va_list ap)
 	int				len;
 
 	i = va_arg(ap, unsigned long);
-	s = ft_itoa_base(i, 16);
+	s = ft_itoa_base(i, 16, a);
 	len = ft_strlen(s);
 	c_pr = (a->dot_val - len) > 0 ? a->dot_val - len : 0;
 	c_s = a->width - len - c_pr - 2;
@@ -51,4 +51,5 @@ void				f_p(t_pf *a, va_list ap)
 		f_p_minus(a, c_pr, c_s, s);
 	else
 		f_p_no_minus(a, c_pr, c_s, s);
+	free(a->str);
 }

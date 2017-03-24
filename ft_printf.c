@@ -22,5 +22,6 @@ int				ft_printf(char *format, ...)
 	a = struct_fill(ap, format, ft_struct());
 	i = a->i;
 	free(a);
+	va_end(ap);
 	return (i);
 }

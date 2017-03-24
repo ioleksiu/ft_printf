@@ -15,7 +15,8 @@
 void			f_u_min(t_pf *a, int c_z, int c_s, uintmax_t i)
 {
 	put_nchar('0', c_z, a);
-	ft_put_unbr(i, a);
+	if (a->dot_val != -1)
+		ft_put_unbr(i, a);
 	put_nchar(' ', c_s, a);
 }
 
@@ -28,7 +29,8 @@ void			f_u_nmin(t_pf *a, int c_z, int c_s, uintmax_t i)
 	else
 		put_nchar(' ', c_s, a);
 	put_nchar('0', c_z, a);
-	ft_put_unbr(i, a);
+	if (a->dot_val != -1)
+		ft_put_unbr(i, a);
 }
 
 void			f_u(t_pf *a, va_list ap)

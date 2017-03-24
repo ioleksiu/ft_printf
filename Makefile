@@ -58,6 +58,7 @@ SRC = cast_d.c \
 		b_n.c \
 		struct_fill.c \
 		pf_cast.c \
+		ft_strdup.c \
 
 all : $(NAME)
 

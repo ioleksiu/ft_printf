@@ -6,11 +6,27 @@
 /*   By: ioleksiu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/21 16:19:39 by ioleksiu          #+#    #+#             */
-/*   Updated: 2017/03/23 18:20:59 by ioleksiu         ###   ########.fr       */
+/*   Updated: 2017/03/24 20:29:32 by ioleksiu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void			f_s2(char *s, t_pf *a, int c_prec, int c_s)
+{
+	if (a->minus == 1)
+	{
+		if (a->dot_val != -1)
+			ft_put_strn(s, c_prec, a);
+		put_nchar(' ', c_s, a);
+	}
+	if (a->minus == 0)
+	{
+		a->zero == 0 ? put_nchar(' ', c_s, a) : put_nchar('0', c_s, a);
+		if (a->dot_val != -1)
+			ft_put_strn(s, c_prec, a);
+	}
+}
 
 void			f_s(t_pf *a, va_list ap)
 {
@@ -23,19 +39,17 @@ void			f_s(t_pf *a, va_list ap)
 	i = ft_strlen(s);
 	c_s = 0;
 	c_prec = 0;
-	if (a->dot)
+	if (a->dot_val == -1)
+		c_s = a->width;
+	if (!s)
+	{
+		s = ft_strdup("(null)");
+		i = ft_strlen(s);
+	}
+	if (a->dot && a->dot_val != -1)
 		c_prec = (a->dot_val > i ? i : a->dot_val);
-	else
+	else if (a->dot_val != -1)
 		c_prec = i;
 	c_s = a->width - c_prec;
-	if (a->minus == 1)
-	{
-		ft_put_strn(s, c_prec, a);
-		put_nchar(' ', c_s, a);
-	}
-	if (a->minus == 0)
-	{
-		a->zero == 0 ? put_nchar(' ', c_s, a) : put_nchar('0', c_s, a);
-		ft_put_strn(s, c_prec, a);
-	}
+	f_s2(s, a, c_prec, c_s);
 }
