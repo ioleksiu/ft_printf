@@ -6,23 +6,23 @@
 /*   By: ioleksiu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/21 16:20:24 by ioleksiu          #+#    #+#             */
-/*   Updated: 2017/03/21 16:21:40 by ioleksiu         ###   ########.fr       */
+/*   Updated: 2017/03/24 13:44:22 by ioleksiu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void ft_put_strn(char *s, int i, t_pf *a)
+void		ft_put_strn(char *s, int i, t_pf *a)
 {
-    if (!s)
-    {
-        ft_put_strn("(null)\0", 6, a);
-        return ;
-    }
-    while (i--)
-    {
-        write(1, s, 1);
-        a->i++;
-        s++;
-    }
+	if (!s)
+	{
+		ft_put_strn("(null)\0", 6, a);
+		return ;
+	}
+	while (i--)
+	{
+		write(1, s, 1);
+		a->i++;
+		s++;
+	}
 }

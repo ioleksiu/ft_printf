@@ -6,37 +6,35 @@
 /*   By: ioleksiu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/19 16:58:33 by ioleksiu          #+#    #+#             */
-/*   Updated: 2017/02/19 16:58:35 by ioleksiu         ###   ########.fr       */
+/*   Updated: 2017/03/24 13:40:05 by ioleksiu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_print_text(t_pf *a, char *s)
+char			*ft_print_text(t_pf *a, char *s)
 {
 	while (*s)
 	{
-		if (*s == '%' && *(s+1) == '%')
+		if (*s == '%' && *(s + 1) == '%')
 		{
-			write(1, s , 1);
-            a->i++;
-			if (*(s+2) != '\0')
-				s+=2;
+			write(1, s, 1);
+			a->i++;
+			if (*(s + 2) != '\0')
+				s += 2;
 			else
-				return(s+=2);
+				return (s += 2);
 		}
 		if (*s == '%' && *(s + 1) != '%')
-			return (s+=1);
-        if (*s != '%')
-        {
-            write(1, s, 1);
-            a->i++;
-            s++;
-        }
+			return (s += 1);
+		if (*s != '%')
+		{
+			write(1, s, 1);
+			a->i++;
+			s++;
+		}
 	}
-
 	if (*s)
-	    return(s+=1);
-    return (s);
-
+		return (s += 1);
+	return (s);
 }

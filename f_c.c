@@ -6,13 +6,13 @@
 /*   By: ioleksiu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/21 16:21:59 by ioleksiu          #+#    #+#             */
-/*   Updated: 2017/03/23 16:46:49 by ioleksiu         ###   ########.fr       */
+/*   Updated: 2017/03/24 14:39:16 by ioleksiu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		f_C(t_pf *a, va_list ap)
+void		f_cc(t_pf *a, va_list ap)
 {
 	f_c(a, ap);
 }

@@ -6,13 +6,13 @@
 /*   By: ioleksiu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/19 15:05:48 by ioleksiu          #+#    #+#             */
-/*   Updated: 2017/02/19 15:05:49 by ioleksiu         ###   ########.fr       */
+/*   Updated: 2017/03/24 13:52:39 by ioleksiu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_pf	*ft_struct(void)
+t_pf		*ft_struct(void)
 {
 	t_pf	*a;
 
@@ -27,6 +27,6 @@ t_pf	*ft_struct(void)
 	a->width = 0;
 	a->size = 0;
 	a->conversion = '0';
-    a->i = 0;
+	a->i = 0;
 	return (a);
 }

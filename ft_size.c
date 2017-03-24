@@ -6,13 +6,13 @@
 /*   By: ioleksiu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/21 17:05:59 by ioleksiu          #+#    #+#             */
-/*   Updated: 2017/03/21 17:06:26 by ioleksiu         ###   ########.fr       */
+/*   Updated: 2017/03/24 13:50:07 by ioleksiu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_size(t_pf *a ,char *s)
+char			*ft_size(t_pf *a, char *s)
 {
 	if (*s == 'h' || *s == 'l' || *s == 'j' || *s == 'z')
 	{

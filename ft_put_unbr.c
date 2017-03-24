@@ -6,27 +6,27 @@
 /*   By: ioleksiu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/21 16:50:44 by ioleksiu          #+#    #+#             */
-/*   Updated: 2017/03/21 16:51:27 by ioleksiu         ###   ########.fr       */
+/*   Updated: 2017/03/24 13:45:38 by ioleksiu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_put_unbr(uintmax_t n, t_pf *a)
+void			ft_put_unbr(uintmax_t n, t_pf *a)
 {
-    char p;
-    uintmax_t z;
+	char		p;
+	uintmax_t	z;
 
-    z = n;
-    if (z >= 10)
-    {
-        ft_putnbr(z / 10, a);
-        ft_putnbr(z % 10, a);
-    }
-    else
-    {
-        p = z + 48;
-        write(1, &p, 1);
-        a->i++;
-    }
+	z = n;
+	if (z >= 10)
+	{
+		ft_putnbr(z / 10, a);
+		ft_putnbr(z % 10, a);
+	}
+	else
+	{
+		p = z + 48;
+		write(1, &p, 1);
+		a->i++;
+	}
 }
