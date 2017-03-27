@@ -14,12 +14,12 @@
 
 void		ft_put_strn(char *s, int i, t_pf *a)
 {
-	if (!s)
-	{
-		ft_put_strn("(null)\0", 6, a);
-		return ;
-	}
-	while (i--)
+//	if (!s)
+//	{
+//		ft_put_strn("(null)\0", 6, a);
+//		return ;
+//	}
+	while (i-- > 0)
 	{
 		write(1, s, 1);
 		a->i++;

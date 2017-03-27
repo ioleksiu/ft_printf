@@ -12,8 +12,13 @@
 
 #include "ft_printf.h"
 
-void		f_xx_nmin(t_pf *a, int c_s, intmax_t i, int n)
+void		f_xx_nmin(t_pf *a, int c_s, intmax_t i, int c_z)
 {
+	int n = 0;
+
+	n = count_num(i);
+	if (i > 0)
+		n = (int)ft_strlen(ft_itoa_base_1(i, 16, a));
 	if (a->hash && i > 0)
 		c_s -= 2;
 	if (a->zero == 0)
@@ -29,14 +34,20 @@ void		f_xx_nmin(t_pf *a, int c_s, intmax_t i, int n)
 		put_nchar('0', c_s, a);
 	else if (a->zero == 1 && a->dot_val == -1)
 		put_nchar(' ', c_s, a);
+	put_nchar('0', c_z, a);
 	if (a->dot_val != -1 && i != 0)
 		ft_putstr(ft_itoa_base_1(i, 16, a), a);
 	else if (a->width > 0)
 		put_nchar(' ', n, a);
 }
 
-void		f_xx_min(t_pf *a, int c_s, intmax_t i)
+void		f_xx_min(t_pf *a, int c_s, intmax_t i/*, int c_z*/)
 {
+	int n = 0;
+
+	n = count_num(i);
+	if (i > 0)
+		n = (int)ft_strlen(ft_itoa_base_1(i, 16, a));
 	if (a->hash)
 	{
 		write(1, "0X", 2);
@@ -61,8 +72,10 @@ void		f_xx(t_pf *a, va_list ap)
 	c_z = 0;
 	i = cast_du(a, ap);
 	n = count_num(i);
+	if (i > 0)
+		n = (int)ft_strlen(ft_itoa_base_1(i, 16, a));
 	c_s = a->dot_val > n ? a->dot_val : n;
 	c_s = a->width - c_s;
 	c_z = a->dot_val - n;
-	(a->minus == 0) ? f_xx_nmin(a, c_s, i, n) : f_xx_min(a, c_s, i);
+	(a->minus == 0) ? f_xx_nmin(a, c_s, i, c_z) : f_xx_min(a, c_s, i);
 }

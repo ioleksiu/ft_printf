@@ -83,6 +83,5 @@ void					put_nchar(char c, int i, t_pf *a);
 t_pf					*struct_fill(va_list ap, char *s, t_pf *a);
 void					b_n(t_pf *a, va_list ap);
 char					*ft_strdup(const char *s1);
-int						pr_f(t_pf *a, int c_pr, int c_s, intmax_t i);
 
 #endif

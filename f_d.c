@@ -6,7 +6,7 @@
 /*   By: ioleksiu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/21 16:10:18 by ioleksiu          #+#    #+#             */
-/*   Updated: 2017/03/24 20:38:48 by ioleksiu         ###   ########.fr       */
+/*   Updated: 2017/03/23 16:52:24 by ioleksiu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void			f_d_nmin(t_pf *a, int c_pr, int c_s, intmax_t i)
 	int			n;
 
 	n = count_num(i);
-	if (a->plus == 1 || i < 0)
+	if (a->plus == 1 || i < 0 )
 		c_s--;
 	if (i < 0 && a->width <= n + 1 + c_pr)
 		c_s = 0;
