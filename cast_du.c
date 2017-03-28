@@ -6,7 +6,7 @@
 /*   By: ioleksiu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/21 16:15:45 by ioleksiu          #+#    #+#             */
-/*   Updated: 2017/03/23 15:49:09 by ioleksiu         ###   ########.fr       */
+/*   Updated: 2017/03/28 19:45:40 by ioleksiu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 uintmax_t		cast_du(t_pf *a, va_list ap)
 {
 	if (a->conversion == 'O')
-		return(va_arg(ap, unsigned long int));
+		return (va_arg(ap, unsigned long int));
 	if (a->size == 2 && a->conversion == 'o')
 		return ((unsigned short)va_arg(ap, unsigned int));
 	if (a->size == 4 || (a->conversion == 'O' && a->size != 1))

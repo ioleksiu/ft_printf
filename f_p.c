@@ -51,5 +51,5 @@ void				f_p(t_pf *a, va_list ap)
 		f_p_minus(a, c_pr, c_s, s);
 	else
 		f_p_no_minus(a, c_pr, c_s, s);
-	free(a->str);
+	free(s);
 }
