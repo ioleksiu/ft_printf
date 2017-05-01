@@ -3,7 +3,7 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mivanov <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: ioleksiu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/24 16:55:45 by mivanov           #+#    #+#              #
 #    Updated: 2017/02/24 15:41:49 by mivanov          ###   ########.fr        #
