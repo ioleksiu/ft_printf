@@ -12,7 +12,7 @@
 
 NAME =  libftprintf.a
 
-CFLAGS = -O0
+CFLAGS = -Wall -Wextra -Werror
 
 OBJECTS = $(SRC:.c=.o)
 
